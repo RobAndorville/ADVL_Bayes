@@ -357,6 +357,71 @@ Partial Class Main
         Me.txtAProb = New System.Windows.Forms.TextBox()
         Me.Label104 = New System.Windows.Forms.Label()
         Me.Label105 = New System.Windows.Forms.Label()
+        Me.TabPage17 = New System.Windows.Forms.TabPage()
+        Me.GroupBox26 = New System.Windows.Forms.GroupBox()
+        Me.Label330 = New System.Windows.Forms.Label()
+        Me.btnGenConfid = New System.Windows.Forms.Button()
+        Me.txtGenNEvent = New System.Windows.Forms.TextBox()
+        Me.Label329 = New System.Windows.Forms.Label()
+        Me.txtPLBEvent = New System.Windows.Forms.TextBox()
+        Me.txtPMLEvent = New System.Windows.Forms.TextBox()
+        Me.Label314 = New System.Windows.Forms.Label()
+        Me.Label322 = New System.Windows.Forms.Label()
+        Me.Label323 = New System.Windows.Forms.Label()
+        Me.txtPUBEvent = New System.Windows.Forms.TextBox()
+        Me.Label313 = New System.Windows.Forms.Label()
+        Me.Label312 = New System.Windows.Forms.Label()
+        Me.Label311 = New System.Windows.Forms.Label()
+        Me.txtGenSurveySize = New System.Windows.Forms.TextBox()
+        Me.txtGenConfid = New System.Windows.Forms.TextBox()
+        Me.Label303 = New System.Windows.Forms.Label()
+        Me.txtConfidence = New System.Windows.Forms.TextBox()
+        Me.btnConfidence = New System.Windows.Forms.Button()
+        Me.Label304 = New System.Windows.Forms.Label()
+        Me.GroupBox25 = New System.Windows.Forms.GroupBox()
+        Me.txtPLBAandB = New System.Windows.Forms.TextBox()
+        Me.Label321 = New System.Windows.Forms.Label()
+        Me.txtPMLAandB = New System.Windows.Forms.TextBox()
+        Me.txtPMLNotAandNotB = New System.Windows.Forms.TextBox()
+        Me.txtPUBB = New System.Windows.Forms.TextBox()
+        Me.Label306 = New System.Windows.Forms.Label()
+        Me.txtPLBB = New System.Windows.Forms.TextBox()
+        Me.txtPMLNotAandB = New System.Windows.Forms.TextBox()
+        Me.txtPMLB = New System.Windows.Forms.TextBox()
+        Me.Label305 = New System.Windows.Forms.Label()
+        Me.Label328 = New System.Windows.Forms.Label()
+        Me.txtPMLAandNotB = New System.Windows.Forms.TextBox()
+        Me.txtPUBA = New System.Windows.Forms.TextBox()
+        Me.Label324 = New System.Windows.Forms.Label()
+        Me.txtPLBA = New System.Windows.Forms.TextBox()
+        Me.txtPLBNotAandNotB = New System.Windows.Forms.TextBox()
+        Me.txtPMLA = New System.Windows.Forms.TextBox()
+        Me.txtPLBNotAandB = New System.Windows.Forms.TextBox()
+        Me.Label327 = New System.Windows.Forms.Label()
+        Me.txtPLBAandNotB = New System.Windows.Forms.TextBox()
+        Me.Label326 = New System.Windows.Forms.Label()
+        Me.Label325 = New System.Windows.Forms.Label()
+        Me.txtPUBAandNotB = New System.Windows.Forms.TextBox()
+        Me.txtPUBAandB = New System.Windows.Forms.TextBox()
+        Me.Label307 = New System.Windows.Forms.Label()
+        Me.txtPUBNotAandNotB = New System.Windows.Forms.TextBox()
+        Me.txtPUBNotAandB = New System.Windows.Forms.TextBox()
+        Me.GroupBox24 = New System.Windows.Forms.GroupBox()
+        Me.txtNAandB = New System.Windows.Forms.TextBox()
+        Me.Label320 = New System.Windows.Forms.Label()
+        Me.Label302 = New System.Windows.Forms.Label()
+        Me.Label319 = New System.Windows.Forms.Label()
+        Me.txtSurveySize = New System.Windows.Forms.TextBox()
+        Me.txtNNotAandNotB = New System.Windows.Forms.TextBox()
+        Me.Label318 = New System.Windows.Forms.Label()
+        Me.txtNNotAandB = New System.Windows.Forms.TextBox()
+        Me.Label317 = New System.Windows.Forms.Label()
+        Me.txtNAandNotB = New System.Windows.Forms.TextBox()
+        Me.Label316 = New System.Windows.Forms.Label()
+        Me.Label315 = New System.Windows.Forms.Label()
+        Me.Label309 = New System.Windows.Forms.Label()
+        Me.Label308 = New System.Windows.Forms.Label()
+        Me.Label310 = New System.Windows.Forms.Label()
         Me.TabPage9 = New System.Windows.Forms.TabPage()
         Me.SplitContainer4 = New System.Windows.Forms.SplitContainer()
         Me.cmbSimImageFormat = New System.Windows.Forms.ComboBox()
@@ -827,9 +892,9 @@ Partial Class Main
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
-        Me.btnAndorville = New System.Windows.Forms.Button()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.txtSampleFormat = New System.Windows.Forms.TextBox()
+        Me.btnAndorville = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout
         Me.TabPage3.SuspendLayout
         Me.TabPage1.SuspendLayout
@@ -861,6 +926,10 @@ Partial Class Main
         Me.TabPage8.SuspendLayout
         Me.GroupBox8.SuspendLayout
         Me.ContextMenuStrip2.SuspendLayout
+        Me.TabPage17.SuspendLayout
+        Me.GroupBox26.SuspendLayout
+        Me.GroupBox25.SuspendLayout
+        Me.GroupBox24.SuspendLayout
         Me.TabPage9.SuspendLayout
         CType(Me.SplitContainer4, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainer4.Panel1.SuspendLayout
@@ -1050,6 +1119,7 @@ Partial Class Main
         Me.TabControl2.Controls.Add(Me.TabPage4)
         Me.TabControl2.Controls.Add(Me.TabPage16)
         Me.TabControl2.Controls.Add(Me.TabPage8)
+        Me.TabControl2.Controls.Add(Me.TabPage17)
         Me.TabControl2.Controls.Add(Me.TabPage9)
         Me.TabControl2.Controls.Add(Me.TabPage5)
         Me.TabControl2.Controls.Add(Me.TabPage10)
@@ -2618,7 +2688,7 @@ Partial Class Main
         '
         Me.Label250.AutoSize = True
         Me.Label250.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label250.Location = New System.Drawing.Point(9, 100)
+        Me.Label250.Location = New System.Drawing.Point(12, 100)
         Me.Label250.Name = "Label250"
         Me.Label250.Size = New System.Drawing.Size(74, 13)
         Me.Label250.TabIndex = 50
@@ -3169,7 +3239,7 @@ Partial Class Main
         Me.Label235.Name = "Label235"
         Me.Label235.Size = New System.Drawing.Size(506, 13)
         Me.Label235.TabIndex = 290
-        Me.Label235.Text = "(aka FPR, Fall-out) Probability of false alarm. Proportion of thase that are trul" &
+        Me.Label235.Text = "(aka FPR, Fall-out) Probability of false alarm. Proportion of those that are trul" &
     "y negative that tested positive."
         '
         'txtFPR
@@ -4334,6 +4404,662 @@ Partial Class Main
         Me.Label105.TabIndex = 23
         Me.Label105.Text = "Probability"
         '
+        'TabPage17
+        '
+        Me.TabPage17.Controls.Add(Me.GroupBox26)
+        Me.TabPage17.Controls.Add(Me.txtConfidence)
+        Me.TabPage17.Controls.Add(Me.btnConfidence)
+        Me.TabPage17.Controls.Add(Me.Label304)
+        Me.TabPage17.Controls.Add(Me.GroupBox25)
+        Me.TabPage17.Controls.Add(Me.GroupBox24)
+        Me.TabPage17.Controls.Add(Me.Label310)
+        Me.TabPage17.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage17.Name = "TabPage17"
+        Me.TabPage17.Size = New System.Drawing.Size(990, 652)
+        Me.TabPage17.TabIndex = 8
+        Me.TabPage17.Text = "Confidence"
+        Me.TabPage17.UseVisualStyleBackColor = True
+        '
+        'GroupBox26
+        '
+        Me.GroupBox26.Controls.Add(Me.Label330)
+        Me.GroupBox26.Controls.Add(Me.btnGenConfid)
+        Me.GroupBox26.Controls.Add(Me.txtGenNEvent)
+        Me.GroupBox26.Controls.Add(Me.Label329)
+        Me.GroupBox26.Controls.Add(Me.txtPLBEvent)
+        Me.GroupBox26.Controls.Add(Me.txtPMLEvent)
+        Me.GroupBox26.Controls.Add(Me.Label314)
+        Me.GroupBox26.Controls.Add(Me.Label322)
+        Me.GroupBox26.Controls.Add(Me.Label323)
+        Me.GroupBox26.Controls.Add(Me.txtPUBEvent)
+        Me.GroupBox26.Controls.Add(Me.Label313)
+        Me.GroupBox26.Controls.Add(Me.Label312)
+        Me.GroupBox26.Controls.Add(Me.Label311)
+        Me.GroupBox26.Controls.Add(Me.txtGenSurveySize)
+        Me.GroupBox26.Controls.Add(Me.txtGenConfid)
+        Me.GroupBox26.Controls.Add(Me.Label303)
+        Me.GroupBox26.Location = New System.Drawing.Point(9, 291)
+        Me.GroupBox26.Name = "GroupBox26"
+        Me.GroupBox26.Size = New System.Drawing.Size(732, 104)
+        Me.GroupBox26.TabIndex = 219
+        Me.GroupBox26.TabStop = False
+        Me.GroupBox26.Text = "General Survey Confidence Interval Calculator:"
+        '
+        'Label330
+        '
+        Me.Label330.AutoSize = True
+        Me.Label330.Location = New System.Drawing.Point(229, 74)
+        Me.Label330.Name = "Label330"
+        Me.Label330.Size = New System.Drawing.Size(45, 13)
+        Me.Label330.TabIndex = 221
+        Me.Label330.Text = "samples"
+        '
+        'btnGenConfid
+        '
+        Me.btnGenConfid.Location = New System.Drawing.Point(212, 18)
+        Me.btnGenConfid.Name = "btnGenConfid"
+        Me.btnGenConfid.Size = New System.Drawing.Size(56, 22)
+        Me.btnGenConfid.TabIndex = 220
+        Me.btnGenConfid.Text = "Update"
+        Me.btnGenConfid.UseVisualStyleBackColor = True
+        '
+        'txtGenNEvent
+        '
+        Me.txtGenNEvent.Location = New System.Drawing.Point(122, 71)
+        Me.txtGenNEvent.Name = "txtGenNEvent"
+        Me.txtGenNEvent.Size = New System.Drawing.Size(101, 20)
+        Me.txtGenNEvent.TabIndex = 215
+        Me.txtGenNEvent.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label329
+        '
+        Me.Label329.AutoSize = True
+        Me.Label329.Location = New System.Drawing.Point(66, 74)
+        Me.Label329.Name = "Label329"
+        Me.Label329.Size = New System.Drawing.Size(50, 13)
+        Me.Label329.TabIndex = 214
+        Me.Label329.Text = "n(Event):"
+        '
+        'txtPLBEvent
+        '
+        Me.txtPLBEvent.Location = New System.Drawing.Point(401, 45)
+        Me.txtPLBEvent.Name = "txtPLBEvent"
+        Me.txtPLBEvent.ReadOnly = True
+        Me.txtPLBEvent.Size = New System.Drawing.Size(100, 20)
+        Me.txtPLBEvent.TabIndex = 210
+        Me.txtPLBEvent.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPMLEvent
+        '
+        Me.txtPMLEvent.Location = New System.Drawing.Point(507, 45)
+        Me.txtPMLEvent.Name = "txtPMLEvent"
+        Me.txtPMLEvent.Size = New System.Drawing.Size(100, 20)
+        Me.txtPMLEvent.TabIndex = 208
+        Me.txtPMLEvent.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label314
+        '
+        Me.Label314.AutoSize = True
+        Me.Label314.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label314.Location = New System.Drawing.Point(508, 26)
+        Me.Label314.Name = "Label314"
+        Me.Label314.Size = New System.Drawing.Size(79, 15)
+        Me.Label314.TabIndex = 209
+        Me.Label314.Text = "Most Likely"
+        '
+        'Label322
+        '
+        Me.Label322.AutoSize = True
+        Me.Label322.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label322.Location = New System.Drawing.Point(614, 26)
+        Me.Label322.Name = "Label322"
+        Me.Label322.Size = New System.Drawing.Size(91, 15)
+        Me.Label322.TabIndex = 213
+        Me.Label322.Text = "Upper Bound"
+        '
+        'Label323
+        '
+        Me.Label323.AutoSize = True
+        Me.Label323.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label323.Location = New System.Drawing.Point(402, 26)
+        Me.Label323.Name = "Label323"
+        Me.Label323.Size = New System.Drawing.Size(91, 15)
+        Me.Label323.TabIndex = 211
+        Me.Label323.Text = "Lower Bound"
+        '
+        'txtPUBEvent
+        '
+        Me.txtPUBEvent.Location = New System.Drawing.Point(613, 45)
+        Me.txtPUBEvent.Name = "txtPUBEvent"
+        Me.txtPUBEvent.ReadOnly = True
+        Me.txtPUBEvent.Size = New System.Drawing.Size(100, 20)
+        Me.txtPUBEvent.TabIndex = 212
+        Me.txtPUBEvent.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label313
+        '
+        Me.Label313.AutoSize = True
+        Me.Label313.Location = New System.Drawing.Point(338, 48)
+        Me.Label313.Name = "Label313"
+        Me.Label313.Size = New System.Drawing.Size(57, 13)
+        Me.Label313.TabIndex = 81
+        Me.Label313.Text = "P(Event) ="
+        '
+        'Label312
+        '
+        Me.Label312.AutoSize = True
+        Me.Label312.Location = New System.Drawing.Point(229, 48)
+        Me.Label312.Name = "Label312"
+        Me.Label312.Size = New System.Drawing.Size(45, 13)
+        Me.Label312.TabIndex = 27
+        Me.Label312.Text = "samples"
+        '
+        'Label311
+        '
+        Me.Label311.AutoSize = True
+        Me.Label311.Location = New System.Drawing.Point(52, 48)
+        Me.Label311.Name = "Label311"
+        Me.Label311.Size = New System.Drawing.Size(64, 13)
+        Me.Label311.TabIndex = 25
+        Me.Label311.Text = "Survey size:"
+        '
+        'txtGenSurveySize
+        '
+        Me.txtGenSurveySize.Location = New System.Drawing.Point(122, 45)
+        Me.txtGenSurveySize.Name = "txtGenSurveySize"
+        Me.txtGenSurveySize.Size = New System.Drawing.Size(101, 20)
+        Me.txtGenSurveySize.TabIndex = 26
+        Me.txtGenSurveySize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtGenConfid
+        '
+        Me.txtGenConfid.Location = New System.Drawing.Point(122, 19)
+        Me.txtGenConfid.Name = "txtGenConfid"
+        Me.txtGenConfid.Size = New System.Drawing.Size(84, 20)
+        Me.txtGenConfid.TabIndex = 24
+        Me.txtGenConfid.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label303
+        '
+        Me.Label303.AutoSize = True
+        Me.Label303.Location = New System.Drawing.Point(27, 22)
+        Me.Label303.Name = "Label303"
+        Me.Label303.Size = New System.Drawing.Size(89, 13)
+        Me.Label303.TabIndex = 23
+        Me.Label303.Text = "Confidence level:"
+        '
+        'txtConfidence
+        '
+        Me.txtConfidence.Location = New System.Drawing.Point(131, 46)
+        Me.txtConfidence.Name = "txtConfidence"
+        Me.txtConfidence.Size = New System.Drawing.Size(84, 20)
+        Me.txtConfidence.TabIndex = 22
+        Me.txtConfidence.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'btnConfidence
+        '
+        Me.btnConfidence.Location = New System.Drawing.Point(221, 45)
+        Me.btnConfidence.Name = "btnConfidence"
+        Me.btnConfidence.Size = New System.Drawing.Size(56, 22)
+        Me.btnConfidence.TabIndex = 84
+        Me.btnConfidence.Text = "Update"
+        Me.btnConfidence.UseVisualStyleBackColor = True
+        '
+        'Label304
+        '
+        Me.Label304.AutoSize = True
+        Me.Label304.Location = New System.Drawing.Point(36, 49)
+        Me.Label304.Name = "Label304"
+        Me.Label304.Size = New System.Drawing.Size(89, 13)
+        Me.Label304.TabIndex = 21
+        Me.Label304.Text = "Confidence level:"
+        '
+        'GroupBox25
+        '
+        Me.GroupBox25.Controls.Add(Me.txtPLBAandB)
+        Me.GroupBox25.Controls.Add(Me.Label321)
+        Me.GroupBox25.Controls.Add(Me.txtPMLAandB)
+        Me.GroupBox25.Controls.Add(Me.txtPMLNotAandNotB)
+        Me.GroupBox25.Controls.Add(Me.txtPUBB)
+        Me.GroupBox25.Controls.Add(Me.Label306)
+        Me.GroupBox25.Controls.Add(Me.txtPLBB)
+        Me.GroupBox25.Controls.Add(Me.txtPMLNotAandB)
+        Me.GroupBox25.Controls.Add(Me.txtPMLB)
+        Me.GroupBox25.Controls.Add(Me.Label305)
+        Me.GroupBox25.Controls.Add(Me.Label328)
+        Me.GroupBox25.Controls.Add(Me.txtPMLAandNotB)
+        Me.GroupBox25.Controls.Add(Me.txtPUBA)
+        Me.GroupBox25.Controls.Add(Me.Label324)
+        Me.GroupBox25.Controls.Add(Me.txtPLBA)
+        Me.GroupBox25.Controls.Add(Me.txtPLBNotAandNotB)
+        Me.GroupBox25.Controls.Add(Me.txtPMLA)
+        Me.GroupBox25.Controls.Add(Me.txtPLBNotAandB)
+        Me.GroupBox25.Controls.Add(Me.Label327)
+        Me.GroupBox25.Controls.Add(Me.txtPLBAandNotB)
+        Me.GroupBox25.Controls.Add(Me.Label326)
+        Me.GroupBox25.Controls.Add(Me.Label325)
+        Me.GroupBox25.Controls.Add(Me.txtPUBAandNotB)
+        Me.GroupBox25.Controls.Add(Me.txtPUBAandB)
+        Me.GroupBox25.Controls.Add(Me.Label307)
+        Me.GroupBox25.Controls.Add(Me.txtPUBNotAandNotB)
+        Me.GroupBox25.Controls.Add(Me.txtPUBNotAandB)
+        Me.GroupBox25.Location = New System.Drawing.Point(295, 84)
+        Me.GroupBox25.Name = "GroupBox25"
+        Me.GroupBox25.Size = New System.Drawing.Size(446, 201)
+        Me.GroupBox25.TabIndex = 218
+        Me.GroupBox25.TabStop = False
+        Me.GroupBox25.Text = "Probabilities:"
+        '
+        'txtPLBAandB
+        '
+        Me.txtPLBAandB.Location = New System.Drawing.Point(115, 38)
+        Me.txtPLBAandB.Name = "txtPLBAandB"
+        Me.txtPLBAandB.ReadOnly = True
+        Me.txtPLBAandB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPLBAandB.TabIndex = 198
+        Me.txtPLBAandB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label321
+        '
+        Me.Label321.AutoSize = True
+        Me.Label321.Location = New System.Drawing.Point(45, 41)
+        Me.Label321.Name = "Label321"
+        Me.Label321.Size = New System.Drawing.Size(64, 13)
+        Me.Label321.TabIndex = 175
+        Me.Label321.Text = "P(AandB) = "
+        '
+        'txtPMLAandB
+        '
+        Me.txtPMLAandB.Location = New System.Drawing.Point(221, 38)
+        Me.txtPMLAandB.Name = "txtPMLAandB"
+        Me.txtPMLAandB.ReadOnly = True
+        Me.txtPMLAandB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPMLAandB.TabIndex = 176
+        Me.txtPMLAandB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPMLNotAandNotB
+        '
+        Me.txtPMLNotAandNotB.Location = New System.Drawing.Point(221, 90)
+        Me.txtPMLNotAandNotB.Name = "txtPMLNotAandNotB"
+        Me.txtPMLNotAandNotB.ReadOnly = True
+        Me.txtPMLNotAandNotB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPMLNotAandNotB.TabIndex = 190
+        Me.txtPMLNotAandNotB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPUBB
+        '
+        Me.txtPUBB.Location = New System.Drawing.Point(327, 168)
+        Me.txtPUBB.Name = "txtPUBB"
+        Me.txtPUBB.ReadOnly = True
+        Me.txtPUBB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPUBB.TabIndex = 215
+        Me.txtPUBB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label306
+        '
+        Me.Label306.AutoSize = True
+        Me.Label306.Location = New System.Drawing.Point(28, 67)
+        Me.Label306.Name = "Label306"
+        Me.Label306.Size = New System.Drawing.Size(81, 13)
+        Me.Label306.TabIndex = 191
+        Me.Label306.Text = "P(NotAandB) = "
+        '
+        'txtPLBB
+        '
+        Me.txtPLBB.Location = New System.Drawing.Point(115, 168)
+        Me.txtPLBB.Name = "txtPLBB"
+        Me.txtPLBB.ReadOnly = True
+        Me.txtPLBB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPLBB.TabIndex = 214
+        Me.txtPLBB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPMLNotAandB
+        '
+        Me.txtPMLNotAandB.Location = New System.Drawing.Point(221, 64)
+        Me.txtPMLNotAandB.Name = "txtPMLNotAandB"
+        Me.txtPMLNotAandB.ReadOnly = True
+        Me.txtPMLNotAandB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPMLNotAandB.TabIndex = 192
+        Me.txtPMLNotAandB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPMLB
+        '
+        Me.txtPMLB.Location = New System.Drawing.Point(221, 168)
+        Me.txtPMLB.Name = "txtPMLB"
+        Me.txtPMLB.ReadOnly = True
+        Me.txtPMLB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPMLB.TabIndex = 213
+        Me.txtPMLB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label305
+        '
+        Me.Label305.AutoSize = True
+        Me.Label305.Location = New System.Drawing.Point(28, 119)
+        Me.Label305.Name = "Label305"
+        Me.Label305.Size = New System.Drawing.Size(81, 13)
+        Me.Label305.TabIndex = 193
+        Me.Label305.Text = "P(AandNotB) = "
+        '
+        'Label328
+        '
+        Me.Label328.AutoSize = True
+        Me.Label328.Location = New System.Drawing.Point(70, 171)
+        Me.Label328.Name = "Label328"
+        Me.Label328.Size = New System.Drawing.Size(39, 13)
+        Me.Label328.TabIndex = 212
+        Me.Label328.Text = "P(B) = "
+        '
+        'txtPMLAandNotB
+        '
+        Me.txtPMLAandNotB.Location = New System.Drawing.Point(221, 116)
+        Me.txtPMLAandNotB.Name = "txtPMLAandNotB"
+        Me.txtPMLAandNotB.ReadOnly = True
+        Me.txtPMLAandNotB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPMLAandNotB.TabIndex = 194
+        Me.txtPMLAandNotB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPUBA
+        '
+        Me.txtPUBA.Location = New System.Drawing.Point(327, 142)
+        Me.txtPUBA.Name = "txtPUBA"
+        Me.txtPUBA.ReadOnly = True
+        Me.txtPUBA.Size = New System.Drawing.Size(100, 20)
+        Me.txtPUBA.TabIndex = 211
+        Me.txtPUBA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label324
+        '
+        Me.Label324.AutoSize = True
+        Me.Label324.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label324.Location = New System.Drawing.Point(222, 19)
+        Me.Label324.Name = "Label324"
+        Me.Label324.Size = New System.Drawing.Size(79, 15)
+        Me.Label324.TabIndex = 197
+        Me.Label324.Text = "Most Likely"
+        '
+        'txtPLBA
+        '
+        Me.txtPLBA.Location = New System.Drawing.Point(115, 142)
+        Me.txtPLBA.Name = "txtPLBA"
+        Me.txtPLBA.ReadOnly = True
+        Me.txtPLBA.Size = New System.Drawing.Size(100, 20)
+        Me.txtPLBA.TabIndex = 210
+        Me.txtPLBA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPLBNotAandNotB
+        '
+        Me.txtPLBNotAandNotB.Location = New System.Drawing.Point(115, 90)
+        Me.txtPLBNotAandNotB.Name = "txtPLBNotAandNotB"
+        Me.txtPLBNotAandNotB.ReadOnly = True
+        Me.txtPLBNotAandNotB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPLBNotAandNotB.TabIndex = 199
+        Me.txtPLBNotAandNotB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPMLA
+        '
+        Me.txtPMLA.Location = New System.Drawing.Point(221, 142)
+        Me.txtPMLA.Name = "txtPMLA"
+        Me.txtPMLA.ReadOnly = True
+        Me.txtPMLA.Size = New System.Drawing.Size(100, 20)
+        Me.txtPMLA.TabIndex = 209
+        Me.txtPMLA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPLBNotAandB
+        '
+        Me.txtPLBNotAandB.Location = New System.Drawing.Point(115, 64)
+        Me.txtPLBNotAandB.Name = "txtPLBNotAandB"
+        Me.txtPLBNotAandB.ReadOnly = True
+        Me.txtPLBNotAandB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPLBNotAandB.TabIndex = 200
+        Me.txtPLBNotAandB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label327
+        '
+        Me.Label327.AutoSize = True
+        Me.Label327.Location = New System.Drawing.Point(70, 145)
+        Me.Label327.Name = "Label327"
+        Me.Label327.Size = New System.Drawing.Size(39, 13)
+        Me.Label327.TabIndex = 208
+        Me.Label327.Text = "P(A) = "
+        '
+        'txtPLBAandNotB
+        '
+        Me.txtPLBAandNotB.Location = New System.Drawing.Point(115, 116)
+        Me.txtPLBAandNotB.Name = "txtPLBAandNotB"
+        Me.txtPLBAandNotB.ReadOnly = True
+        Me.txtPLBAandNotB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPLBAandNotB.TabIndex = 201
+        Me.txtPLBAandNotB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label326
+        '
+        Me.Label326.AutoSize = True
+        Me.Label326.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label326.Location = New System.Drawing.Point(328, 19)
+        Me.Label326.Name = "Label326"
+        Me.Label326.Size = New System.Drawing.Size(91, 15)
+        Me.Label326.TabIndex = 207
+        Me.Label326.Text = "Upper Bound"
+        '
+        'Label325
+        '
+        Me.Label325.AutoSize = True
+        Me.Label325.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label325.Location = New System.Drawing.Point(116, 19)
+        Me.Label325.Name = "Label325"
+        Me.Label325.Size = New System.Drawing.Size(91, 15)
+        Me.Label325.TabIndex = 202
+        Me.Label325.Text = "Lower Bound"
+        '
+        'txtPUBAandNotB
+        '
+        Me.txtPUBAandNotB.Location = New System.Drawing.Point(327, 116)
+        Me.txtPUBAandNotB.Name = "txtPUBAandNotB"
+        Me.txtPUBAandNotB.ReadOnly = True
+        Me.txtPUBAandNotB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPUBAandNotB.TabIndex = 206
+        Me.txtPUBAandNotB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPUBAandB
+        '
+        Me.txtPUBAandB.Location = New System.Drawing.Point(327, 38)
+        Me.txtPUBAandB.Name = "txtPUBAandB"
+        Me.txtPUBAandB.ReadOnly = True
+        Me.txtPUBAandB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPUBAandB.TabIndex = 203
+        Me.txtPUBAandB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label307
+        '
+        Me.Label307.AutoSize = True
+        Me.Label307.Location = New System.Drawing.Point(11, 93)
+        Me.Label307.Name = "Label307"
+        Me.Label307.Size = New System.Drawing.Size(98, 13)
+        Me.Label307.TabIndex = 189
+        Me.Label307.Text = "P(NotAandNotB) = "
+        '
+        'txtPUBNotAandNotB
+        '
+        Me.txtPUBNotAandNotB.Location = New System.Drawing.Point(327, 90)
+        Me.txtPUBNotAandNotB.Name = "txtPUBNotAandNotB"
+        Me.txtPUBNotAandNotB.ReadOnly = True
+        Me.txtPUBNotAandNotB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPUBNotAandNotB.TabIndex = 204
+        Me.txtPUBNotAandNotB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtPUBNotAandB
+        '
+        Me.txtPUBNotAandB.Location = New System.Drawing.Point(327, 64)
+        Me.txtPUBNotAandB.Name = "txtPUBNotAandB"
+        Me.txtPUBNotAandB.ReadOnly = True
+        Me.txtPUBNotAandB.Size = New System.Drawing.Size(100, 20)
+        Me.txtPUBNotAandB.TabIndex = 205
+        Me.txtPUBNotAandB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'GroupBox24
+        '
+        Me.GroupBox24.Controls.Add(Me.txtNAandB)
+        Me.GroupBox24.Controls.Add(Me.Label320)
+        Me.GroupBox24.Controls.Add(Me.Label302)
+        Me.GroupBox24.Controls.Add(Me.Label319)
+        Me.GroupBox24.Controls.Add(Me.txtSurveySize)
+        Me.GroupBox24.Controls.Add(Me.txtNNotAandNotB)
+        Me.GroupBox24.Controls.Add(Me.Label318)
+        Me.GroupBox24.Controls.Add(Me.txtNNotAandB)
+        Me.GroupBox24.Controls.Add(Me.Label317)
+        Me.GroupBox24.Controls.Add(Me.txtNAandNotB)
+        Me.GroupBox24.Controls.Add(Me.Label316)
+        Me.GroupBox24.Controls.Add(Me.Label315)
+        Me.GroupBox24.Controls.Add(Me.Label309)
+        Me.GroupBox24.Controls.Add(Me.Label308)
+        Me.GroupBox24.Location = New System.Drawing.Point(9, 84)
+        Me.GroupBox24.Name = "GroupBox24"
+        Me.GroupBox24.Size = New System.Drawing.Size(280, 201)
+        Me.GroupBox24.TabIndex = 217
+        Me.GroupBox24.TabStop = False
+        Me.GroupBox24.Text = "Survey Sample Counts:"
+        '
+        'txtNAandB
+        '
+        Me.txtNAandB.Location = New System.Drawing.Point(122, 38)
+        Me.txtNAandB.Name = "txtNAandB"
+        Me.txtNAandB.ReadOnly = True
+        Me.txtNAandB.Size = New System.Drawing.Size(101, 20)
+        Me.txtNAandB.TabIndex = 178
+        Me.txtNAandB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label320
+        '
+        Me.Label320.AutoSize = True
+        Me.Label320.Location = New System.Drawing.Point(53, 41)
+        Me.Label320.Name = "Label320"
+        Me.Label320.Size = New System.Drawing.Size(63, 13)
+        Me.Label320.TabIndex = 177
+        Me.Label320.Text = "n(AandB) = "
+        '
+        'Label302
+        '
+        Me.Label302.AutoSize = True
+        Me.Label302.Location = New System.Drawing.Point(43, 155)
+        Me.Label302.Name = "Label302"
+        Me.Label302.Size = New System.Drawing.Size(70, 13)
+        Me.Label302.TabIndex = 18
+        Me.Label302.Text = "Survey size ="
+        '
+        'Label319
+        '
+        Me.Label319.AutoSize = True
+        Me.Label319.Location = New System.Drawing.Point(19, 93)
+        Me.Label319.Name = "Label319"
+        Me.Label319.Size = New System.Drawing.Size(97, 13)
+        Me.Label319.TabIndex = 179
+        Me.Label319.Text = "n(NotAandNotB) = "
+        '
+        'txtSurveySize
+        '
+        Me.txtSurveySize.Location = New System.Drawing.Point(122, 152)
+        Me.txtSurveySize.Name = "txtSurveySize"
+        Me.txtSurveySize.ReadOnly = True
+        Me.txtSurveySize.Size = New System.Drawing.Size(101, 20)
+        Me.txtSurveySize.TabIndex = 19
+        Me.txtSurveySize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtNNotAandNotB
+        '
+        Me.txtNNotAandNotB.Location = New System.Drawing.Point(122, 90)
+        Me.txtNNotAandNotB.Name = "txtNNotAandNotB"
+        Me.txtNNotAandNotB.ReadOnly = True
+        Me.txtNNotAandNotB.Size = New System.Drawing.Size(101, 20)
+        Me.txtNNotAandNotB.TabIndex = 180
+        Me.txtNNotAandNotB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label318
+        '
+        Me.Label318.AutoSize = True
+        Me.Label318.Location = New System.Drawing.Point(37, 67)
+        Me.Label318.Name = "Label318"
+        Me.Label318.Size = New System.Drawing.Size(80, 13)
+        Me.Label318.TabIndex = 181
+        Me.Label318.Text = "n(NotAandB) = "
+        '
+        'txtNNotAandB
+        '
+        Me.txtNNotAandB.Location = New System.Drawing.Point(122, 64)
+        Me.txtNNotAandB.Name = "txtNNotAandB"
+        Me.txtNNotAandB.ReadOnly = True
+        Me.txtNNotAandB.Size = New System.Drawing.Size(101, 20)
+        Me.txtNNotAandB.TabIndex = 182
+        Me.txtNNotAandB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label317
+        '
+        Me.Label317.AutoSize = True
+        Me.Label317.Location = New System.Drawing.Point(36, 119)
+        Me.Label317.Name = "Label317"
+        Me.Label317.Size = New System.Drawing.Size(80, 13)
+        Me.Label317.TabIndex = 183
+        Me.Label317.Text = "n(AandNotB) = "
+        '
+        'txtNAandNotB
+        '
+        Me.txtNAandNotB.Location = New System.Drawing.Point(122, 116)
+        Me.txtNAandNotB.Name = "txtNAandNotB"
+        Me.txtNAandNotB.ReadOnly = True
+        Me.txtNAandNotB.Size = New System.Drawing.Size(101, 20)
+        Me.txtNAandNotB.TabIndex = 184
+        Me.txtNAandNotB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label316
+        '
+        Me.Label316.AutoSize = True
+        Me.Label316.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label316.Location = New System.Drawing.Point(231, 67)
+        Me.Label316.Name = "Label316"
+        Me.Label316.Size = New System.Drawing.Size(22, 13)
+        Me.Label316.TabIndex = 187
+        Me.Label316.Text = "FP"
+        '
+        'Label315
+        '
+        Me.Label315.AutoSize = True
+        Me.Label315.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label315.Location = New System.Drawing.Point(227, 93)
+        Me.Label315.Name = "Label315"
+        Me.Label315.Size = New System.Drawing.Size(24, 13)
+        Me.Label315.TabIndex = 186
+        Me.Label315.Text = "TN"
+        '
+        'Label309
+        '
+        Me.Label309.AutoSize = True
+        Me.Label309.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label309.Location = New System.Drawing.Point(229, 119)
+        Me.Label309.Name = "Label309"
+        Me.Label309.Size = New System.Drawing.Size(23, 13)
+        Me.Label309.TabIndex = 188
+        Me.Label309.Text = "FN"
+        '
+        'Label308
+        '
+        Me.Label308.AutoSize = True
+        Me.Label308.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label308.Location = New System.Drawing.Point(229, 41)
+        Me.Label308.Name = "Label308"
+        Me.Label308.Size = New System.Drawing.Size(23, 13)
+        Me.Label308.TabIndex = 185
+        Me.Label308.Text = "TP"
+        '
+        'Label310
+        '
+        Me.Label310.AutoSize = True
+        Me.Label310.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label310.Location = New System.Drawing.Point(5, 5)
+        Me.Label310.Name = "Label310"
+        Me.Label310.Size = New System.Drawing.Size(604, 20)
+        Me.Label310.TabIndex = 216
+        Me.Label310.Text = "The confidence interval of the probabilities. The Wilson score interval method is" &
+    " used."
+        '
         'TabPage9
         '
         Me.TabPage9.Controls.Add(Me.SplitContainer4)
@@ -4609,9 +5335,11 @@ Partial Class Main
         '
         'pbSimulation
         '
+        Me.pbSimulation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pbSimulation.Location = New System.Drawing.Point(6, 393)
         Me.pbSimulation.Name = "pbSimulation"
-        Me.pbSimulation.Size = New System.Drawing.Size(461, 33)
+        Me.pbSimulation.Size = New System.Drawing.Size(606, 33)
         Me.pbSimulation.TabIndex = 22
         '
         'GroupBox11
@@ -9009,6 +9737,13 @@ Partial Class Main
         Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList2.Images.SetKeyName(0, "Bayes Prob Diag.jpg")
         '
+        'txtSampleFormat
+        '
+        Me.txtSampleFormat.Location = New System.Drawing.Point(333, 19)
+        Me.txtSampleFormat.Name = "txtSampleFormat"
+        Me.txtSampleFormat.Size = New System.Drawing.Size(63, 20)
+        Me.txtSampleFormat.TabIndex = 64
+        '
         'btnAndorville
         '
         Me.btnAndorville.BackgroundImage = Global.ADVL_Bayes.My.Resources.Resources.Andorville_16May16_TM_Crop_Grey
@@ -9019,13 +9754,6 @@ Partial Class Main
         Me.btnAndorville.Size = New System.Drawing.Size(118, 29)
         Me.btnAndorville.TabIndex = 49
         Me.btnAndorville.UseVisualStyleBackColor = True
-        '
-        'txtSampleFormat
-        '
-        Me.txtSampleFormat.Location = New System.Drawing.Point(333, 19)
-        Me.txtSampleFormat.Name = "txtSampleFormat"
-        Me.txtSampleFormat.Size = New System.Drawing.Size(63, 20)
-        Me.txtSampleFormat.TabIndex = 64
         '
         'Main
         '
@@ -9090,6 +9818,14 @@ Partial Class Main
         Me.GroupBox8.ResumeLayout(False)
         Me.GroupBox8.PerformLayout
         Me.ContextMenuStrip2.ResumeLayout(False)
+        Me.TabPage17.ResumeLayout(False)
+        Me.TabPage17.PerformLayout
+        Me.GroupBox26.ResumeLayout(False)
+        Me.GroupBox26.PerformLayout
+        Me.GroupBox25.ResumeLayout(False)
+        Me.GroupBox25.PerformLayout
+        Me.GroupBox24.ResumeLayout(False)
+        Me.GroupBox24.PerformLayout
         Me.TabPage9.ResumeLayout(False)
         Me.TabPage9.PerformLayout
         Me.SplitContainer4.Panel1.ResumeLayout(False)
@@ -9951,4 +10687,69 @@ Partial Class Main
     Friend WithEvents lblFPpct As Label
     Friend WithEvents lblTNpct As Label
     Friend WithEvents lblTPpct As Label
+    Friend WithEvents TabPage17 As TabPage
+    Friend WithEvents txtConfidence As TextBox
+    Friend WithEvents Label304 As Label
+    Friend WithEvents txtSurveySize As TextBox
+    Friend WithEvents Label302 As Label
+    Friend WithEvents btnConfidence As Button
+    Friend WithEvents txtPUBB As TextBox
+    Friend WithEvents txtPLBB As TextBox
+    Friend WithEvents txtPMLB As TextBox
+    Friend WithEvents Label328 As Label
+    Friend WithEvents txtPUBA As TextBox
+    Friend WithEvents txtPLBA As TextBox
+    Friend WithEvents txtPMLA As TextBox
+    Friend WithEvents Label327 As Label
+    Friend WithEvents Label326 As Label
+    Friend WithEvents txtPUBAandNotB As TextBox
+    Friend WithEvents txtPUBNotAandB As TextBox
+    Friend WithEvents txtPUBNotAandNotB As TextBox
+    Friend WithEvents txtPUBAandB As TextBox
+    Friend WithEvents Label325 As Label
+    Friend WithEvents txtPLBAandNotB As TextBox
+    Friend WithEvents txtPLBNotAandB As TextBox
+    Friend WithEvents txtPLBNotAandNotB As TextBox
+    Friend WithEvents txtPLBAandB As TextBox
+    Friend WithEvents Label324 As Label
+    Friend WithEvents txtPMLAandNotB As TextBox
+    Friend WithEvents Label305 As Label
+    Friend WithEvents txtPMLNotAandB As TextBox
+    Friend WithEvents Label306 As Label
+    Friend WithEvents txtPMLNotAandNotB As TextBox
+    Friend WithEvents Label307 As Label
+    Friend WithEvents Label308 As Label
+    Friend WithEvents Label309 As Label
+    Friend WithEvents Label315 As Label
+    Friend WithEvents Label316 As Label
+    Friend WithEvents txtNAandNotB As TextBox
+    Friend WithEvents Label317 As Label
+    Friend WithEvents txtNNotAandB As TextBox
+    Friend WithEvents Label318 As Label
+    Friend WithEvents txtNNotAandNotB As TextBox
+    Friend WithEvents Label319 As Label
+    Friend WithEvents txtNAandB As TextBox
+    Friend WithEvents Label320 As Label
+    Friend WithEvents txtPMLAandB As TextBox
+    Friend WithEvents Label321 As Label
+    Friend WithEvents Label310 As Label
+    Friend WithEvents GroupBox25 As GroupBox
+    Friend WithEvents GroupBox24 As GroupBox
+    Friend WithEvents GroupBox26 As GroupBox
+    Friend WithEvents Label330 As Label
+    Friend WithEvents btnGenConfid As Button
+    Friend WithEvents txtGenNEvent As TextBox
+    Friend WithEvents Label329 As Label
+    Friend WithEvents txtPLBEvent As TextBox
+    Friend WithEvents txtPMLEvent As TextBox
+    Friend WithEvents Label314 As Label
+    Friend WithEvents Label322 As Label
+    Friend WithEvents Label323 As Label
+    Friend WithEvents txtPUBEvent As TextBox
+    Friend WithEvents Label313 As Label
+    Friend WithEvents Label312 As Label
+    Friend WithEvents Label311 As Label
+    Friend WithEvents txtGenSurveySize As TextBox
+    Friend WithEvents txtGenConfid As TextBox
+    Friend WithEvents Label303 As Label
 End Class

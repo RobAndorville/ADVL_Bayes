@@ -1408,15 +1408,16 @@ Public Class clsSimSettings
         End Set
     End Property
 
-    ReadOnly Property FormattedProbEvent As String
-        Get
-            If ProbabilityMeasure = "Percent" Then
-                Return Format(ProbEvent * 100, PercentFormat) & "%"
-            Else
-                Return Format(ProbEvent, DecimalFormat)
-            End If
-        End Get
-    End Property
+    'NOTE: Use the same formatting as used in Bayes!
+    'ReadOnly Property FormattedProbEvent As String
+    '    Get
+    '        If ProbabilityMeasure = "Percent" Then
+    '            Return Format(ProbEvent * 100, PercentFormat) & "%"
+    '        Else
+    '            Return Format(ProbEvent, DecimalFormat)
+    '        End If
+    '    End Get
+    'End Property
 
     'General Simulation Parameters:
     Private _surveyRepeatNo As Integer = 10000 'The number of times the simulated survey will be repeated to determine the uncertainty in probabilities determined using the survey.

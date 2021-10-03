@@ -279,6 +279,115 @@ Public Class Main
         End Set
     End Property
 
+    Private _confidence As Double = 0.95 'The confidence level used to determine the upper and lower bounds of probability estimates.
+    Property Confidence As Double
+        Get
+            Return _confidence
+        End Get
+        Set(value As Double)
+            _confidence = value
+        End Set
+    End Property
+
+    'The General Confidence Interval calculator settings: ---------------------------------------------------------------------------------
+    Private _genConfidence As Double = 0.95 'The confidence level used in the General Confidence Interval calculator.
+    Property GenConfidence As Double
+        Get
+            Return _genConfidence
+        End Get
+        Set(value As Double)
+            _genConfidence = value
+        End Set
+    End Property
+
+    Private _genSurveySize As Long = 5000 'The survey size used in the General Confidence Interval calculator.
+    Property GenSurveySize As Double
+        Get
+            Return _genSurveySize
+        End Get
+        Set(value As Double)
+            _genSurveySize = value
+            _genNEvent = GenSurveySize * GenMLProbEvent 'Update the _genNEvent value
+        End Set
+    End Property
+
+    Private _genNEvent As Double = 50 'The survey event count used in the General Confidence Interval calculator.
+    Property GenNEvent As Double
+        Get
+            Return _genNEvent
+        End Get
+        Set(value As Double)
+            _genNEvent = value
+            _genMLProbEvent = GenNEvent / GenSurveySize 'Update the _genMLProbEvent value
+        End Set
+    End Property
+
+    Private _genMLProbEvent As Double = _genNEvent / _genSurveySize 'The Most Likely Probability of the Event in the General Confidence Interval calculator.
+    Property GenMLProbEvent As Double
+        Get
+            Return _genMLProbEvent
+        End Get
+        Set(value As Double)
+            _genMLProbEvent = value
+            _genNEvent = GenSurveySize * GenMLProbEvent 'Update the _genNEvent value
+        End Set
+    End Property
+
+    'NOTE: These properties are stored in BayesSim:
+    ''The Event Simulation settings: --------------------------------------------------------------------------------------------------
+
+    'Private _eventSimSurveySize As Long = 5000 'The survey size used in the Event Simulation.
+    'Property EventSimSurveySize As Long
+    '    Get
+    '        Return _eventSimSurveySize
+    '    End Get
+    '    Set(value As Long)
+    '        _eventSimSurveySize = value
+    '    End Set
+    'End Property
+
+    'Private _eventSimProbEvent As Double = 0.2 'The Event Probability used in the Event Simulation.
+    'Property EventSimProbEvent As Double
+    '    Get
+
+    '    End Get
+    '    Set(value As Double)
+
+    '    End Set
+    'End Property
+
+    ''The General Simulation settings: --------------------------------------------------------------------------------------------------
+
+    'Private _simRepeats As Long = 10000 'The number of survey repeats to use in the survey simulation.
+    'Property SimRepeats As Long
+    '    Get
+    '        Return _simRepeats
+    '    End Get
+    '    Set(value As Long)
+    '        _simRepeats = value
+    '    End Set
+    'End Property
+
+    'Private _simTimeoutSecs As Integer = 60 'The survey simulation timeout period in seconds. The simulation will be terminated after this time if it is still running.
+    'Property SimTimeoutSecs As Integer
+    '    Get
+    '        Return _simTimeoutSecs
+    '    End Get
+    '    Set(value As Integer)
+    '        _simTimeoutSecs = value
+    '    End Set
+    'End Property
+
+    'Private _simSeed As Integer = -1 'The randomisation seed to used for the survey simulation.
+    'Property SimSeed As Integer
+    '    Get
+    '        Return _simSeed
+    '    End Get
+    '    Set(value As Integer)
+    '        _simSeed = value
+    '    End Set
+    'End Property
+    ''---------------------------------------------------------------------------------------------------------------------------------------
 
     Private _connectionHashcode As Integer 'The Message Service connection hashcode. This is used to identify a connection in the Message Service when reconnecting.
     Property ConnectionHashcode As Integer
@@ -515,6 +624,22 @@ Public Class Main
                                <WorkFlowFileName><%= WorkflowFileName %></WorkFlowFileName>
                                <!---->
                                <SelectedTabIndex><%= TabControl1.SelectedIndex %></SelectedTabIndex>
+                               <Split1Distance><%= SplitContainer1.SplitterDistance %></Split1Distance>
+                               <Split2Distance><%= SplitContainer2.SplitterDistance %></Split2Distance>
+                               <Split3Distance><%= SplitContainer3.SplitterDistance %></Split3Distance>
+                               <Split4Distance><%= SplitContainer4.SplitterDistance %></Split4Distance>
+                               <Confidence><%= Confidence %></Confidence>
+                               <!--General Survey Confidence Interval Calculator Settings.-->
+                               <GenConfidence><%= GenConfidence %></GenConfidence>
+                               <GenSurveySize><%= GenSurveySize %></GenSurveySize>
+                               <GenNEvent><%= GenNEvent %></GenNEvent>
+                               <!--Event Simulation Settings.-->
+                               <EventSimSurveySize><%= BayesSim.Settings.EventSurveySize %></EventSimSurveySize>
+                               <EventSimProbEvent><%= BayesSim.Settings.ProbEvent %></EventSimProbEvent>
+                               <!--General Simulation Settings.-->
+                               <SimRepeats><%= BayesSim.Settings.SurveyRepeatNo %></SimRepeats>
+                               <SimTimeoutSecs><%= BayesSim.Settings.TimeOutSeconds %></SimTimeoutSecs>
+                               <SimSeed><%= BayesSim.Settings.Seed %></SimSeed>
                            </FormSettings>
 
         'Add code to include other settings to save after the comment line <!---->
@@ -552,6 +677,28 @@ Public Class Main
 
             'Add code to read other saved setting here:
             If Settings.<FormSettings>.<SelectedTabIndex>.Value <> Nothing Then TabControl1.SelectedIndex = Settings.<FormSettings>.<SelectedTabIndex>.Value
+
+            If Settings.<FormSettings>.<Split1Distance>.Value <> Nothing Then SplitContainer1.SplitterDistance = Settings.<FormSettings>.<Split1Distance>.Value
+            If Settings.<FormSettings>.<Split2Distance>.Value <> Nothing Then SplitContainer2.SplitterDistance = Settings.<FormSettings>.<Split2Distance>.Value
+            If Settings.<FormSettings>.<Split3Distance>.Value <> Nothing Then SplitContainer3.SplitterDistance = Settings.<FormSettings>.<Split3Distance>.Value
+            If Settings.<FormSettings>.<Split4Distance>.Value <> Nothing Then SplitContainer4.SplitterDistance = Settings.<FormSettings>.<Split4Distance>.Value
+
+            If Settings.<FormSettings>.<Confidence>.Value <> Nothing Then Confidence = Settings.<FormSettings>.<Confidence>.Value
+
+            If Settings.<FormSettings>.<GenConfidence>.Value <> Nothing Then GenConfidence = Settings.<FormSettings>.<GenConfidence>.Value
+            If Settings.<FormSettings>.<GenSurveySize>.Value <> Nothing Then GenSurveySize = Settings.<FormSettings>.<GenSurveySize>.Value
+            If Settings.<FormSettings>.<GenNEvent>.Value <> Nothing Then
+                GenNEvent = Settings.<FormSettings>.<GenNEvent>.Value
+                RedisplayGenConfIntVals()
+                GenWilsonInterval() 'Calculate the Confidence Interval
+            End If
+
+            If Settings.<FormSettings>.<EventSimSurveySize>.Value <> Nothing Then BayesSim.Settings.EventSurveySize = Settings.<FormSettings>.<EventSimSurveySize>.Value
+            If Settings.<FormSettings>.<EventSimProbEvent>.Value <> Nothing Then BayesSim.Settings.ProbEvent = Settings.<FormSettings>.<EventSimProbEvent>.Value
+            If Settings.<FormSettings>.<SimRepeats>.Value <> Nothing Then BayesSim.Settings.SurveyRepeatNo = Settings.<FormSettings>.<SimRepeats>.Value
+            If Settings.<FormSettings>.<SimTimeoutSecs>.Value <> Nothing Then BayesSim.Settings.TimeOutSeconds = Settings.<FormSettings>.<SimTimeoutSecs>.Value
+            If Settings.<FormSettings>.<SimSeed>.Value <> Nothing Then BayesSim.Settings.Seed = Settings.<FormSettings>.<SimSeed>.Value
+
 
             CheckFormPos()
         End If
@@ -1236,15 +1383,12 @@ Public Class Main
         cmbSimImageFormat.Items.Add("Tiff")
         cmbSimImageFormat.SelectedIndex = 0
 
-
-        txtEventSimSurveySize.Text = BayesSim.Settings.EventSurveySize
-        'txtSimPEvent.Text = BayesSim.Settings.ProbEvent
-        txtSimPEvent.Text = BayesSim.Settings.FormattedProbEvent
-
-
-        txtSimRepeats.Text = BayesSim.Settings.SurveyRepeatNo
-        txtTimeOutSecs.Text = BayesSim.Settings.TimeOutSeconds
-        txtSeed.Text = BayesSim.Settings.Seed
+        'The simulation info is now displayed after RestoreFormSettings()
+        'txtEventSimSurveySize.Text = BayesSim.Settings.EventSurveySize
+        'txtSimPEvent.Text = BayesSim.Settings.FormattedProbEvent
+        'txtSimRepeats.Text = BayesSim.Settings.SurveyRepeatNo
+        'txtTimeOutSecs.Text = BayesSim.Settings.TimeOutSeconds
+        'txtSeed.Text = BayesSim.Settings.Seed
 
         BayesSim.AreaNotAandNotB.FillColor = Color.LightGoldenrodYellow
         BayesSim.AreaNotAandNotB.LineColor = Color.Black
@@ -1292,8 +1436,14 @@ Public Class Main
         chkGivenBLabel.Checked = True 'Move the Given B conditional version of the label
         chkGivenNotBLabel.Checked = True 'Move the Given Not B conditional version of the label
 
+        txtConfidence.Text = ProbString(Confidence)
 
-
+        'Default General Confidence Interval settings:
+        txtGenConfid.Text = ProbString(GenConfidence) 'The initial Confidence value to use in the General Confidence Interval calculator.
+        txtGenSurveySize.Text = SampString(GenSurveySize) 'The initial Survey Size value to use in the General Confidence Interval calculator.
+        txtGenNEvent.Text = SampString(GenNEvent) 'The initial Survey Event Count to use in the General Confidence Interval calculator.
+        txtPMLEvent.Text = ProbString(GenMLProbEvent) 'The initial Most Likely Event Probability to use in the General Confidence Interval calculator.
+        GenWilsonInterval() 'Calculate the Confidence Interval.
 
 
         InitialiseForm() 'Initialise the form for a new project.
@@ -1307,6 +1457,12 @@ Public Class Main
         RestoreProjectSettings() 'Restore the Project settings
 
         ShowProjectInfo() 'Show the project information.
+
+        txtEventSimSurveySize.Text = BayesSim.Settings.EventSurveySize
+        txtSimPEvent.Text = ProbString(BayesSim.Settings.ProbEvent)
+        txtSimRepeats.Text = BayesSim.Settings.SurveyRepeatNo
+        txtTimeOutSecs.Text = BayesSim.Settings.TimeOutSeconds
+        txtSeed.Text = BayesSim.Settings.Seed
 
         Message.AddText("------------------- Started OK -------------------------------------------------------------------------- " & vbCrLf & vbCrLf, "Heading")
 
@@ -1615,22 +1771,26 @@ Public Class Main
     Private Sub btnShowData_Click(sender As Object, e As EventArgs) Handles btnShowData.Click
         'Open the Simulated Data form.
 
-        If IsNothing(SimData) Then
-            SimData = New frmTable
-            SimData.Show()
-            'SimData.dgvResults.DataSource = BayesSim.Data.Tables("Bayes_Simulation")
-            'SimData.dgvResults.AutoResizeColumns()
-            'SimData.dgvResults.Update()
-            'SimData.dgvResults.Refresh()
-            SimData.TableName = "Bayes_Simulation"
-        Else
-            SimData.Show()
-            If SimData.TableName = "Bayes_Simulation" Then
-            Else
-                SimData.UpdateTableList()
+        If BayesSim.Data.Tables.Contains("Bayes_Simulation") Then
+            If IsNothing(SimData) Then
+                SimData = New frmTable
+                SimData.Show()
+                'SimData.dgvResults.DataSource = BayesSim.Data.Tables("Bayes_Simulation")
+                'SimData.dgvResults.AutoResizeColumns()
+                'SimData.dgvResults.Update()
+                'SimData.dgvResults.Refresh()
                 SimData.TableName = "Bayes_Simulation"
+            Else
+                SimData.Show()
+                If SimData.TableName = "Bayes_Simulation" Then
+                Else
+                    SimData.UpdateTableList()
+                    SimData.TableName = "Bayes_Simulation"
+                End If
+                SimData.BringToFront()
             End If
-            SimData.BringToFront()
+        Else
+            Message.AddWarning("The Bayes_Simulation table was not found. Please run a simulation." & vbCrLf)
         End If
     End Sub
 
@@ -1641,22 +1801,26 @@ Public Class Main
     Private Sub btnShowEventSimData_Click(sender As Object, e As EventArgs) Handles btnShowEventSimData.Click
         'Open the Simulated Data form.
 
-        If IsNothing(SimData) Then
-            SimData = New frmTable
-            SimData.Show()
-            'SimData.dgvResults.DataSource = BayesSim.Data.Tables("Event_Simulation")
-            'SimData.dgvResults.AutoResizeColumns()
-            'SimData.dgvResults.Update()
-            'SimData.dgvResults.Refresh()
-            SimData.TableName = "Event_Simulation"
-        Else
-            SimData.Show()
-            If SimData.TableName = "Event_Simulation" Then
-            Else
-                SimData.UpdateTableList()
+        If BayesSim.Data.Tables.Contains("Event_Simulation") Then
+            If IsNothing(SimData) Then
+                SimData = New frmTable
+                SimData.Show()
+                'SimData.dgvResults.DataSource = BayesSim.Data.Tables("Event_Simulation")
+                'SimData.dgvResults.AutoResizeColumns()
+                'SimData.dgvResults.Update()
+                'SimData.dgvResults.Refresh()
                 SimData.TableName = "Event_Simulation"
+            Else
+                SimData.Show()
+                If SimData.TableName = "Event_Simulation" Then
+                Else
+                    SimData.UpdateTableList()
+                    SimData.TableName = "Event_Simulation"
+                End If
+                SimData.BringToFront()
             End If
-            SimData.BringToFront()
+        Else
+            Message.AddWarning("The Event_Simulation table was not found. Please run a simulation." & vbCrLf)
         End If
     End Sub
 
@@ -5567,6 +5731,9 @@ Public Class Main
         ShowProbabilities()
         ShowSampleCounts()
 
+        RedisplayGenConfIntVals() 'This redisplays the values in the General Confidence Interval calculator using the preferred sample count and probability formats.
+        UpdateEventSimSettings() 'This redisplays the Event Simulation settings using the preferred sample count and probability formats.
+
         'Update the Categories tab: -----------------------------------------------------------------------
         UpdateCategoryInfo()
 
@@ -7044,6 +7211,8 @@ Public Class Main
             ShowDecimalProbabilities()
         End If
 
+        WilsonInterval() 'Show the confidence intervals for the probabilities
+
         'CalcPerformanceMetrics()
         ShowPerformanceMetrics()
     End Sub
@@ -7080,6 +7249,16 @@ Public Class Main
         'Label34.Text = "Probability of Event B given Event Not A (false positive)"
         'Label36.Text = "Probability of Event A given Event B (updated probability)"
 
+        'Update the Confidence tab:
+        txtPMLAandB.Text = Format(Bayes.ProbAandB.Value, Bayes.Settings.DecimalFormat)
+        txtPMLNotAandB.Text = Format(Bayes.ProbNotAandB.Value, Bayes.Settings.DecimalFormat)
+        txtPMLNotAandNotB.Text = Format(Bayes.ProbNotAandNotB.Value, Bayes.Settings.DecimalFormat)
+        txtPMLAandNotB.Text = Format(Bayes.ProbAandNotB.Value, Bayes.Settings.DecimalFormat)
+        txtPMLA.Text = Format(Bayes.ProbA.Value, Bayes.Settings.DecimalFormat)
+        txtPMLB.Text = Format(Bayes.ProbB.Value, Bayes.Settings.DecimalFormat)
+
+        txtConfidence.Text = Format(Confidence, Bayes.Settings.DecimalFormat)
+
     End Sub
 
     Private Sub ShowPercentProbabilities()
@@ -7112,6 +7291,16 @@ Public Class Main
         'Label34.Text = "Probability of Event B given Event Not A (false positive)"
         'Label36.Text = "Probability of Event A given Event B (updated probability)"
 
+        'Update the Confidence tab:
+        txtPMLAandB.Text = Format(Bayes.ProbAandB.Value * 100, Bayes.Settings.PercentFormat) & "%"
+        txtPMLNotAandB.Text = Format(Bayes.ProbNotAandB.Value * 100, Bayes.Settings.PercentFormat) & "%"
+        txtPMLNotAandNotB.Text = Format(Bayes.ProbNotAandNotB.Value * 100, Bayes.Settings.PercentFormat) & "%"
+        txtPMLAandNotB.Text = Format(Bayes.ProbAandNotB.Value * 100, Bayes.Settings.PercentFormat) & "%"
+        txtPMLA.Text = Format(Bayes.ProbA.Value * 100, Bayes.Settings.PercentFormat) & "%"
+        txtPMLB.Text = Format(Bayes.ProbB.Value * 100, Bayes.Settings.PercentFormat) & "%"
+
+        txtConfidence.Text = Format(Confidence * 100, Bayes.Settings.PercentFormat) & "%"
+
     End Sub
 
     Private Sub ShowSampleCounts()
@@ -7125,13 +7314,20 @@ Public Class Main
         txtSampsNotAandB.Text = Format(Bayes.ProbNotAandB.Value * Bayes.SampleSize.Value, Bayes.Settings.SamplesFormat)
         txtSampsAandNotB.Text = Format(Bayes.ProbAandNotB.Value * Bayes.SampleSize.Value, Bayes.Settings.SamplesFormat)
 
-
         txtSampleSize.Text = Format(Bayes.SampleSize.Value, Bayes.Settings.SamplesFormat)
 
         'txtNAandB.Text = Format(Bayes.ProbAandB.Value * Bayes.SampleSize, Bayes.SamplesFormat)
         txtCalcProbNum.Text = Format(Bayes.ProbAandB.Value * Bayes.SampleSize.Value, Bayes.Settings.SamplesFormat)
         'txtNA.Text = Format(Bayes.ProbA.Value * Bayes.SampleSize, Bayes.SamplesFormat)
         txtCalcProbDenom.Text = Format(Bayes.ProbB.Value * Bayes.SampleSize.Value, Bayes.Settings.SamplesFormat)
+
+        'Update the Confidence tab:
+        txtNAandB.Text = Format(Bayes.ProbAandB.Value * Bayes.SampleSize.Value, Bayes.Settings.SamplesFormat)
+        txtNNotAandB.Text = Format(Bayes.ProbNotAandB.Value * Bayes.SampleSize.Value, Bayes.Settings.SamplesFormat)
+        txtNNotAandNotB.Text = Format(Bayes.ProbNotAandNotB.Value * Bayes.SampleSize.Value, Bayes.Settings.SamplesFormat)
+        txtNAandNotB.Text = Format(Bayes.ProbAandNotB.Value * Bayes.SampleSize.Value, Bayes.Settings.SamplesFormat)
+
+        txtSurveySize.Text = Format(Bayes.SampleSize.Value, Bayes.Settings.SamplesFormat)
 
     End Sub
 
@@ -7203,35 +7399,22 @@ Public Class Main
         Try
             If txtProbA.ReadOnly = False Then
                 Dim ProbValue As Single
-                'ProbValue = txtProbA.Text
                 If Bayes.Settings.ProbabilityMeasure = "Decimal" Then
                     ProbValue = txtProbA.Text
-                    'Bayes.ProbA.Value = ProbValue
-                    'Bayes.ProbA.DefinedValue = ProbValue
                     If Bayes.ProbA.Value <> ProbValue Then
                         Bayes.ProbA.DefinedValue = ProbValue 'Only set the DefinedValue if the Value has changed
                         UpdateFormData()
                     End If
                 ElseIf Bayes.Settings.ProbabilityMeasure = "Percent" Then
                     ProbValue = txtProbA.Text.Replace("%", "")
-                    'Bayes.ProbA.Value = ProbValue / 100
-                    'Bayes.ProbA.DefinedValue = ProbValue / 100
                     ProbValue = ProbValue / 100
                     If Bayes.ProbA.Value <> ProbValue Then
                         Bayes.ProbA.DefinedValue = ProbValue 'Only set the DefinedValue if the Value has changed
                         UpdateFormData()
                     End If
-                    'ElseIf Bayes.ProbabilityMeasure = "Samples" Then
-                    '    Bayes.ProbA.Value = ProbValue / Bayes.SampleSize
                 Else
                     Message.AddWarning("Unknown probability measure: " & Bayes.Settings.ProbabilityMeasure & vbCrLf)
                 End If
-                'ShowProbAgivenB()
-                'DrawDiagram()
-                'DrawEventATree()
-                'DrawEventBTree()
-                'ShowProbabilities()
-                'ShowSampleCounts()
             End If
         Catch ex As Exception
             Message.AddWarning(ex.Message & vbCrLf)
@@ -7988,7 +8171,10 @@ Public Class Main
             'txtConditionLabel.Text = Bayes.AnnotConditionLabelATrue
             txtConditionLabel.Text = Bayes.AnnotCondition.EventATrue.Text
 
-            If rbConditionA.Focused Then Bayes.Settings.Condition = "EventATrue" 'Only change this if the user has clicked the radio button.
+            If rbConditionA.Focused Then
+                Bayes.Settings.Condition = "EventATrue" 'Only change this if the user has clicked the radio button.
+
+            End If
 
             Bayes.ZeroProbRegion.A = False
             rbA.Enabled = True
@@ -10173,6 +10359,11 @@ Public Class Main
     End Sub
 
     Private Sub txtSeed_LostFocus(sender As Object, e As EventArgs) Handles txtSeed.LostFocus
+        'The seed value has been changed
+        Dim Seed As Integer = txtSeed.Text
+        If Seed < -1 Then Seed = -1
+        txtSeed.Text = Seed
+        BayesSim.Settings.Seed = Seed
 
     End Sub
 
@@ -10226,7 +10417,7 @@ Public Class Main
         Dim EventSurveySize As Integer
         Try
             EventSurveySize = txtEventSimSurveySize.Text
-            txtEventSimSurveySize.Text = EventSurveySize
+            txtEventSimSurveySize.Text = SampString(EventSurveySize)
             BayesSim.Settings.EventSurveySize = EventSurveySize
         Catch ex As Exception
             Message.AddWarning(ex.Message & vbCrLf)
@@ -10239,14 +10430,53 @@ Public Class Main
 
     Private Sub txtSimPEvent_LostFocus(sender As Object, e As EventArgs) Handles txtSimPEvent.LostFocus
         'A new Event probability has been entered.
-        Dim PEvent As Double
+        'Dim PEvent As Double
+        'Try
+        '    PEvent = txtSimPEvent.Text
+        '    txtSimPEvent.Text = PEvent
+        '    BayesSim.Settings.ProbEvent = PEvent
+        'Catch ex As Exception
+        '    Message.AddWarning(ex.Message & vbCrLf)
+        'End Try
+
         Try
-            PEvent = txtSimPEvent.Text
-            txtSimPEvent.Text = PEvent
-            BayesSim.Settings.ProbEvent = PEvent
+            Dim PEvent As Double
+            If Bayes.Settings.ProbabilityMeasure = "Decimal" Then
+                PEvent = txtSimPEvent.Text
+                txtSimPEvent.Text = ProbString(PEvent)  'Redisplay the event probability with the specified format.
+                If BayesSim.Settings.ProbEvent <> PEvent Then
+                    BayesSim.Settings.ProbEvent = PEvent 'Only set the BayesSim.Settings.ProbEvent if the Value has changed
+                End If
+            ElseIf Bayes.Settings.ProbabilityMeasure = "Percent" Then
+                PEvent = txtSimPEvent.Text.Replace("%", "")
+                PEvent = PEvent / 100
+                txtSimPEvent.Text = ProbString(PEvent)  'Redisplay the event probability with the specified format.
+                If BayesSim.Settings.ProbEvent <> PEvent Then
+                    BayesSim.Settings.ProbEvent = PEvent 'Only set the BayesSim.Settings.ProbEvent if the Value has changed
+                End If
+            Else
+                Message.AddWarning("Unknown probability measure: " & Bayes.Settings.ProbabilityMeasure & vbCrLf)
+            End If
+
         Catch ex As Exception
             Message.AddWarning(ex.Message & vbCrLf)
         End Try
+
+
+
+
+    End Sub
+
+    Private Sub UpdateEventSimSettings()
+        'Update the Event Simulation settings.
+        'This will be required if the display formats have changed.
+        txtEventSimSurveySize.Text = SampString(BayesSim.Settings.EventSurveySize)
+        txtSimPEvent.Text = ProbString(BayesSim.Settings.ProbEvent)
+
+        txtSimRepeats.Text = SampString(BayesSim.Settings.SurveyRepeatNo)
+        txtTimeOutSecs.Text = BayesSim.Settings.TimeOutSeconds
+        txtSeed.Text = BayesSim.Settings.Seed
+
     End Sub
 
 
@@ -10317,11 +10547,16 @@ Public Class Main
         'Table: Bayes_Simulation
         'Fields: SampsAandNotB, SampsA, SampsAandB, SampsB, SampsNotAandB, SampsNotAandNotB
 
-        Dim FormNo As Integer = OpenNewSeriesAnalysis()
-        SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
-        SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
-        SeriesAnalysisList(FormNo).SourceColumnName = "SampsA"
-        SeriesAnalysisList(FormNo).Show
+        If BayesSim.Data.Tables.Contains("Bayes_Simulation") Then
+            Dim FormNo As Integer = OpenNewSeriesAnalysis()
+            SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
+            SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
+            SeriesAnalysisList(FormNo).SourceColumnName = "SampsA"
+            SeriesAnalysisList(FormNo).Show
+        Else
+            Message.AddWarning("The Bayes_Simulation table does not exist. Please run a simulation." & vbCrLf)
+        End If
+
     End Sub
 
     Private Sub btnChartPAandNotB_Click(sender As Object, e As EventArgs) Handles btnChartPAandNotB.Click
@@ -10329,12 +10564,16 @@ Public Class Main
 
         'Table: Bayes_Simulation
         'Fields: SampsAandNotB, SampsA, SampsAandB, SampsB, SampsNotAandB, SampsNotAandNotB
+        If BayesSim.Data.Tables.Contains("Bayes_Simulation") Then
+            Dim FormNo As Integer = OpenNewSeriesAnalysis()
+            SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
+            SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
+            SeriesAnalysisList(FormNo).SourceColumnName = "SampsAandNotB"
+            SeriesAnalysisList(FormNo).Show
+        Else
+            Message.AddWarning("The Bayes_Simulation table does not exist. Please run a simulation." & vbCrLf)
+        End If
 
-        Dim FormNo As Integer = OpenNewSeriesAnalysis()
-        SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
-        SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
-        SeriesAnalysisList(FormNo).SourceColumnName = "SampsAandNotB"
-        SeriesAnalysisList(FormNo).Show
     End Sub
 
     Private Sub btnChartPAandB_Click(sender As Object, e As EventArgs) Handles btnChartPAandB.Click
@@ -10342,12 +10581,16 @@ Public Class Main
 
         'Table: Bayes_Simulation
         'Fields: SampsAandNotB, SampsA, SampsAandB, SampsB, SampsNotAandB, SampsNotAandNotB
+        If BayesSim.Data.Tables.Contains("Bayes_Simulation") Then
+            Dim FormNo As Integer = OpenNewSeriesAnalysis()
+            SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
+            SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
+            SeriesAnalysisList(FormNo).SourceColumnName = "SampsAandB"
+            SeriesAnalysisList(FormNo).Show
+        Else
+            Message.AddWarning("The Bayes_Simulation table does not exist. Please run a simulation." & vbCrLf)
+        End If
 
-        Dim FormNo As Integer = OpenNewSeriesAnalysis()
-        SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
-        SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
-        SeriesAnalysisList(FormNo).SourceColumnName = "SampsAandB"
-        SeriesAnalysisList(FormNo).Show
     End Sub
 
     Private Sub btnChartPNotAandB_Click(sender As Object, e As EventArgs) Handles btnChartPNotAandB.Click
@@ -10355,12 +10598,16 @@ Public Class Main
 
         'Table: Bayes_Simulation
         'Fields: SampsAandNotB, SampsA, SampsAandB, SampsB, SampsNotAandB, SampsNotAandNotB
+        If BayesSim.Data.Tables.Contains("Bayes_Simulation") Then
+            Dim FormNo As Integer = OpenNewSeriesAnalysis()
+            SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
+            SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
+            SeriesAnalysisList(FormNo).SourceColumnName = "SampsNotAandB"
+            SeriesAnalysisList(FormNo).Show
+        Else
+            Message.AddWarning("The Bayes_Simulation table does not exist. Please run a simulation." & vbCrLf)
+        End If
 
-        Dim FormNo As Integer = OpenNewSeriesAnalysis()
-        SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
-        SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
-        SeriesAnalysisList(FormNo).SourceColumnName = "SampsNotAandB"
-        SeriesAnalysisList(FormNo).Show
     End Sub
 
     Private Sub btnChartPB_Click(sender As Object, e As EventArgs) Handles btnChartPB.Click
@@ -10368,12 +10615,16 @@ Public Class Main
 
         'Table: Bayes_Simulation
         'Fields: SampsAandNotB, SampsA, SampsAandB, SampsB, SampsNotAandB, SampsNotAandNotB
+        If BayesSim.Data.Tables.Contains("Bayes_Simulation") Then
+            Dim FormNo As Integer = OpenNewSeriesAnalysis()
+            SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
+            SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
+            SeriesAnalysisList(FormNo).SourceColumnName = "SampsB"
+            SeriesAnalysisList(FormNo).Show
+        Else
+            Message.AddWarning("The Bayes_Simulation table does not exist. Please run a simulation." & vbCrLf)
+        End If
 
-        Dim FormNo As Integer = OpenNewSeriesAnalysis()
-        SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
-        SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
-        SeriesAnalysisList(FormNo).SourceColumnName = "SampsB"
-        SeriesAnalysisList(FormNo).Show
     End Sub
 
     Private Sub btnChartPNotAandNotB_Click(sender As Object, e As EventArgs) Handles btnChartPNotAandNotB.Click
@@ -10381,12 +10632,16 @@ Public Class Main
 
         'Table: Bayes_Simulation
         'Fields: SampsAandNotB, SampsA, SampsAandB, SampsB, SampsNotAandB, SampsNotAandNotB
+        If BayesSim.Data.Tables.Contains("Bayes_Simulation") Then
+            Dim FormNo As Integer = OpenNewSeriesAnalysis()
+            SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
+            SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
+            SeriesAnalysisList(FormNo).SourceColumnName = "SampsNotAandNotB"
+            SeriesAnalysisList(FormNo).Show
+        Else
+            Message.AddWarning("The Bayes_Simulation table does not exist. Please run a simulation." & vbCrLf)
+        End If
 
-        Dim FormNo As Integer = OpenNewSeriesAnalysis()
-        SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.SurveySize
-        SeriesAnalysisList(FormNo).SourceTableName = "Bayes_Simulation"
-        SeriesAnalysisList(FormNo).SourceColumnName = "SampsNotAandNotB"
-        SeriesAnalysisList(FormNo).Show
     End Sub
 
     Private Sub btnChartPEvent_Click(sender As Object, e As EventArgs) Handles btnChartPEvent.Click
@@ -10395,15 +10650,19 @@ Public Class Main
         Dim ColumnName As String = "EventTrue"
         'Table: Event_Simulation
         'Fields: EventTrue, EventFalse
+        If BayesSim.Data.Tables.Contains("Event_Simulation") Then
+            Dim FormNo As Integer = OpenNewSeriesAnalysis()
+            'SeriesAnalysisList(FormNo).TableName = TableName
+            SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.EventSurveySize
+            SeriesAnalysisList(FormNo).SourceTableName = TableName
+            'SeriesAnalysisList(FormNo).ColumnName = ColumnName
+            'SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.EventSurveySize
+            SeriesAnalysisList(FormNo).SourceColumnName = ColumnName
+            SeriesAnalysisList(FormNo).Show
+        Else
+            Message.AddWarning("The Event_Simulation table does not exist. Please run a simulation." & vbCrLf)
+        End If
 
-        Dim FormNo As Integer = OpenNewSeriesAnalysis()
-        'SeriesAnalysisList(FormNo).TableName = TableName
-        SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.EventSurveySize
-        SeriesAnalysisList(FormNo).SourceTableName = TableName
-        'SeriesAnalysisList(FormNo).ColumnName = ColumnName
-        'SeriesAnalysisList(FormNo).NTrials = BayesSim.Settings.EventSurveySize
-        SeriesAnalysisList(FormNo).SourceColumnName = ColumnName
-        SeriesAnalysisList(FormNo).Show
 
     End Sub
 
@@ -11434,6 +11693,367 @@ Public Class Main
         End If
     End Sub
 
+    Private Sub btnConfidence_Click(sender As Object, e As EventArgs) Handles btnConfidence.Click
+        'Update the confidence interval
+        'NOTE: the is updated when the focus has left the Confidence text box.
+        'WilsonInterval()
+
+    End Sub
+
+    Private Sub txtConfid_TextChanged(sender As Object, e As EventArgs) Handles txtConfidence.TextChanged
+
+    End Sub
+
+    Private Sub txtConfid_LostFocus(sender As Object, e As EventArgs) Handles txtConfidence.LostFocus
+        'The Confidence level may have changed.
+
+        Try
+            Dim ConfidValue As Double
+            If Bayes.Settings.ProbabilityMeasure = "Decimal" Then
+                ConfidValue = txtConfidence.Text
+                If Confidence <> ConfidValue Then
+                    Confidence = ConfidValue 'Only set the DefinedValue if the Value has changed
+                    WilsonInterval()
+                End If
+            ElseIf Bayes.Settings.ProbabilityMeasure = "Percent" Then
+                ConfidValue = txtConfidence.Text.Replace("%", "")
+                ConfidValue = ConfidValue / 100
+                If Confidence <> ConfidValue Then
+                    Confidence = ConfidValue 'Only set the DefinedValue if the Value has changed
+                    WilsonInterval()
+                End If
+            Else
+                Message.AddWarning("Unknown probability measure: " & Bayes.Settings.ProbabilityMeasure & vbCrLf)
+            End If
+
+        Catch ex As Exception
+            Message.AddWarning(ex.Message & vbCrLf)
+        End Try
+    End Sub
+
+    Private Sub WilsonInterval()
+        'Calculates the Wilson Confidence Interval for the survey probability estimates.
+
+        'Formulas are from the Research Article: "Ensemble confidence intervals for binomial proportions" by Hayeon Park & Lawrence M. Leemis, Statistics in Medicine. 2019;38:3460–3475.
+        'See also: https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm
+
+        'The confidence intervals can be checked using these pages:
+        'https://www.statskingdom.com/41_proportion_confidence_interval.html
+        'https://epitools.ausvet.com.au/ciproportion
+
+        Dim N As Long = Bayes.SampleSize.Value 'The number of samples in the survey
+        Dim P As Double 'The estimated probability
+        Dim Alpha As Double = 1 - Confidence 'The required confidence level. The Confidence property is edited using the txtConfidence text box.
+        Dim ZHA As Double = InvStdNormalCdf(1 - (Alpha / 2)) 'This is the (1 - Alpha/2) percentile of the standard normal distribution.
+        Dim ZHASq As Double = ZHA ^ 2
+
+        'Calculate intervals for P(AandB):
+        P = Bayes.ProbAandB.Value
+        Dim LowerProb As Double = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) - ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        Dim UpperProb As Double = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) + ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        txtPLBAandB.Text = ProbString(LowerProb)
+        txtPUBAandB.Text = ProbString(UpperProb)
+
+        'Calculate intervals for P(NotAandB):
+        P = Bayes.ProbNotAandB.Value
+        LowerProb = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) - ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        UpperProb = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) + ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        txtPLBNotAandB.Text = ProbString(LowerProb)
+        txtPUBNotAandB.Text = ProbString(UpperProb)
+
+        'Calculate intervals for P(NotAandNotB):
+        P = Bayes.ProbNotAandNotB.Value
+        LowerProb = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) - ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        UpperProb = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) + ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        txtPLBNotAandNotB.Text = ProbString(LowerProb)
+        txtPUBNotAandNotB.Text = ProbString(UpperProb)
+
+        'Calculate intervals for P(AandNotB):
+        P = Bayes.ProbAandNotB.Value
+        LowerProb = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) - ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        UpperProb = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) + ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        txtPLBAandNotB.Text = ProbString(LowerProb)
+        txtPUBAandNotB.Text = ProbString(UpperProb)
+
+        'Calculate intervals for P(A):
+        P = Bayes.ProbA.Value
+        LowerProb = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) - ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        UpperProb = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) + ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        txtPLBA.Text = ProbString(LowerProb)
+        txtPUBA.Text = ProbString(UpperProb)
+
+        'Calculate intervals for P(B):
+        P = Bayes.ProbB.Value
+        LowerProb = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) - ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        UpperProb = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) + ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        txtPLBB.Text = ProbString(LowerProb)
+        txtPUBB.Text = ProbString(UpperProb)
+
+    End Sub
+
+    'Private Sub Wilson()
+    '    'Calculate the Wilson Score Interval.
+    '    'FOR TESTING.
+
+    '    Dim Confidence As Double = txtConfid.Text 'The required confidence level for the interval. The is the decimal confidence level (between 0 and 1).
+    '    Dim N As Long = txtSurveySize.Text 'The number of samples in the survey
+    '    Dim P As Double = txtEstProb.Text 'The estimated probability of success
+
+    '    'If the required confidence level is 95%, the decimal confidence level is 0.95 and alpha is 1 - 0.95 = 0.05.
+    '    Dim Alpha As Double = 1 - Confidence
+
+    '    'Dim KA As Double = InvStdNormalCdf(Alpha)
+    '    'Dim KvalSq As Double = InvStdNormalCdf(1 - (Alpha / 2)) ^ 2
+
+    '    'Dim LowerProb As Double = (2 * N * P + KvalSq - KA * Math.Sqrt(4 * N * P * (1 - P) + KvalSq)) / (2 * (N + KvalSq))
+    '    'Dim UpperProb As Double = (2 * N * P + KvalSq + KA * Math.Sqrt(4 * N * P * (1 - P) + KvalSq)) / (2 * (N + KvalSq))
+
+
+    '    Dim ZHA As Double = InvStdNormalCdf(1 - (Alpha / 2)) 'This is the (1 - Alpha/2) percentile of the standard normal distribution.
+    '    'Dim ZHASq As Double = InvStdNormalCdf(1 - (Alpha / 2)) ^ 2
+    '    Dim ZHASq As Double = ZHA ^ 2
+
+    '    'Formulas are from the Research Article: "Ensemble confidence intervals for binomial proportions" by Hayeon Park & Lawrence M. Leemis, Statistics in Medicine. 2019;38:3460–3475.
+    '    Dim LowerProb As Double = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) - ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+    '    Dim UpperProb As Double = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) + ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+
+    '    Dim Center As Double = P + ZHASq / (2 * N) / (1 + ZHASq / N)
+
+    '    txtLower.Text = LowerProb
+    '    txtUpper.Text = UpperProb
+    '    txtCenter.Text = Center
+
+    'End Sub
+
+    'Private Sub txtSndX_TextChanged(sender As Object, e As EventArgs)
+    '    'The Standard Normal Distribution X value has changed.
+    '    'Recalculate the probability density at X
+
+    '    Try
+    '        Dim X As Double = txtSndX.Text
+    '        Dim PD As Double
+    '        'PD = (1 / Math.Sqrt(2 * Math.PI)) * Math.E ^ (-X ^ 2 / 2)
+    '        PD = (1 / Math.Sqrt(2 * Math.PI)) * Math.Exp(-0.5 * X ^ 2)
+    '        txtSndPdf.Text = PD
+    '        txtSndCdf.Text = StdNormalCdf(X)
+    '    Catch ex As Exception
+
+    '    End Try
+
+
+    'End Sub
+
+    'Private Sub txtInputCdf_TextChanged(sender As Object, e As EventArgs)
+    '    'The Input Standard Normal CDF value has changed.
+    '    'Recalculate the Inverse CDF value.
+
+    '    Try
+    '        Dim CDF As Double = txtInputCdf.Text
+    '        txtInvCdf.Text = InvStdNormalCdf(CDF)
+
+    '    Catch ex As Exception
+
+    '    End Try
+    'End Sub
+
+    Private Sub GenWilsonInterval()
+        'Calculates the Wilson Confidence Interval for the survey probability estimates.
+        'This method uses the data in the General Survey Confidence Inteval Calculator group box.
+        Try
+            Dim N As Long = GenSurveySize 'The number of samples in the survey
+            Dim P As Double = GenMLProbEvent 'The estimated probability
+            Dim Alpha As Double = 1 - GenConfidence 'The required confidence level. The Confidence property is edited using the txtConfidence text box.
+            Dim ZHA As Double = InvStdNormalCdf(1 - (Alpha / 2)) 'This is the (1 - Alpha/2) percentile of the standard normal distribution.
+            Dim ZHASq As Double = ZHA ^ 2
+
+            'Calculate the confidence intervals:
+            Dim LowerProb As Double = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) - ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+            Dim UpperProb As Double = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) + ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+            txtPLBEvent.Text = ProbString(LowerProb)
+            txtPUBEvent.Text = ProbString(UpperProb)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub RedisplayGenConfIntVals()
+        'Redisplay the General Confidence Interval Calculator values.
+        txtGenConfid.Text = ProbString(GenConfidence)
+        txtGenSurveySize.Text = SampString(GenSurveySize)
+        txtGenNEvent.Text = SampString(GenNEvent)
+        txtPMLEvent.Text = ProbString(GenMLProbEvent)
+        GenWilsonInterval()
+    End Sub
+
+    Private Sub txtGenConfid_TextChanged(sender As Object, e As EventArgs) Handles txtGenConfid.TextChanged
+
+    End Sub
+
+    Private Sub txtGenConfid_LostFocus(sender As Object, e As EventArgs) Handles txtGenConfid.LostFocus
+        'The General Calc Confidence level may have changed.
+        Try
+            Dim ConfidValue As Double
+            If Bayes.Settings.ProbabilityMeasure = "Decimal" Then
+                ConfidValue = txtGenConfid.Text
+                txtGenConfid.Text = ProbString(ConfidValue) 'Redisplay the confidence level with the specified format.
+                If GenConfidence <> ConfidValue Then
+                    GenConfidence = ConfidValue 'Only set the GenConfidence if the Value has changed
+                    GenWilsonInterval()
+                End If
+            ElseIf Bayes.Settings.ProbabilityMeasure = "Percent" Then
+                ConfidValue = txtGenConfid.Text.Replace("%", "")
+                ConfidValue = ConfidValue / 100
+                txtGenConfid.Text = ProbString(ConfidValue) 'Redisplay the confidence level with the specified format.
+                If GenConfidence <> ConfidValue Then
+                    GenConfidence = ConfidValue 'Only set the GenConfidence if the Value has changed
+                    GenWilsonInterval()
+                End If
+            Else
+                Message.AddWarning("Unknown probability measure: " & Bayes.Settings.ProbabilityMeasure & vbCrLf)
+            End If
+
+        Catch ex As Exception
+            Message.AddWarning(ex.Message & vbCrLf)
+        End Try
+    End Sub
+
+    Private Sub txtGenSurveySize_TextChanged(sender As Object, e As EventArgs) Handles txtGenSurveySize.TextChanged
+
+    End Sub
+
+    Private Sub txtGenSurveySize_LostFocus(sender As Object, e As EventArgs) Handles txtGenSurveySize.LostFocus
+        'The General Calc Survey Size may have changed.
+        Try
+            Dim SurveySize As Double
+            SurveySize = txtGenSurveySize.Text
+            txtGenSurveySize.Text = SampString(SurveySize) 'Redisplay the survey size with the specified format.
+            If GenSurveySize <> SurveySize Then
+                GenSurveySize = SurveySize 'Only set the GenSurveySize if the Value has changed
+                txtGenNEvent.Text = SampString(GenNEvent) 'Changing the survey size changes the survey event count
+                GenWilsonInterval()
+            End If
+        Catch ex As Exception
+            Message.AddWarning(ex.Message & vbCrLf)
+        End Try
+    End Sub
+
+    Private Sub txtGenNEvent_TextChanged(sender As Object, e As EventArgs) Handles txtGenNEvent.TextChanged
+
+    End Sub
+
+    Private Sub txtGenNEvent_LostFocus(sender As Object, e As EventArgs) Handles txtGenNEvent.LostFocus
+        'The General Calc Survey Event Count may have changed.
+        Try
+            Dim NEvent As Double
+            NEvent = txtGenNEvent.Text
+            txtGenNEvent.Text = SampString(NEvent) 'Redisplay the survey event count with the specified format.
+            If GenNEvent <> NEvent Then
+                GenNEvent = NEvent 'Only set the GenNEvent if the Value has changed
+                txtPMLEvent.Text = ProbString(GenMLProbEvent) 'Changing the survey event count changes the most likely event probability
+                GenWilsonInterval()
+            End If
+        Catch ex As Exception
+            Message.AddWarning(ex.Message & vbCrLf)
+        End Try
+    End Sub
+
+    Private Sub txtPMLEvent_TextChanged(sender As Object, e As EventArgs) Handles txtPMLEvent.TextChanged
+
+    End Sub
+
+    Private Sub txtPMLEvent_LostFocus(sender As Object, e As EventArgs) Handles txtPMLEvent.LostFocus
+        'The General Calc Most Likely Event Probability may have changed.
+        Try
+            Dim PEvent As Double
+            If Bayes.Settings.ProbabilityMeasure = "Decimal" Then
+                PEvent = txtPMLEvent.Text
+                txtPMLEvent.Text = ProbString(PEvent)  'Redisplay the survey event probability with the specified format.
+                If GenMLProbEvent <> PEvent Then
+                    GenMLProbEvent = PEvent 'Only set the GenMLProbEvent if the Value has changed
+                    txtGenNEvent.Text = SampString(GenNEvent) 'Changing the event probability changes the survey event count
+                    GenWilsonInterval()
+                End If
+            ElseIf Bayes.Settings.ProbabilityMeasure = "Percent" Then
+                PEvent = txtPMLEvent.Text.Replace("%", "")
+                PEvent = PEvent / 100
+                txtPMLEvent.Text = ProbString(PEvent)  'Redisplay the survey event probability with the specified format.
+                If GenMLProbEvent <> PEvent Then
+                    GenMLProbEvent = PEvent 'Only set the GenMLProbEvent if the Value has changed
+                    txtGenNEvent.Text = SampString(GenNEvent) 'Changing the event probability changes the survey event count
+                    GenWilsonInterval()
+                End If
+            Else
+                Message.AddWarning("Unknown probability measure: " & Bayes.Settings.ProbabilityMeasure & vbCrLf)
+            End If
+
+        Catch ex As Exception
+            Message.AddWarning(ex.Message & vbCrLf)
+        End Try
+    End Sub
+
+    Private Function StdNormalCdf(ByRef X As Double) As Double
+        'An approximation of the standard cumulative Normal distribution.
+        'Abramowitz & Stegun (1964)
+        'http://www.vbforums.com/showthread.php?359156-Calculate-Normal-Distribution
+        'https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/7025/versions/1/previews/normcdfM.m/index.html
+
+        Dim PosX As Double
+        If X >= 0 Then
+            PosX = X
+        Else
+            PosX = -X
+        End If
+
+        Dim P As Double = 0.2316419
+        'Dim T As Double = 1 / (1 + P * X)
+        Dim T As Double = 1 / (1 + P * PosX)
+        Dim B1 As Double = 0.31938153
+        Dim B2 As Double = -0.356563782
+        Dim B3 As Double = 1.781477937
+        Dim B4 As Double = -1.821255978
+        Dim B5 As Double = 1.330274429
+        'Dim Z As Double = 1 / (Math.Sqrt(2 * Math.PI)) * Math.Exp(-X ^ 2 / 2)
+        Dim Z As Double = 1 / (Math.Sqrt(2 * Math.PI)) * Math.Exp(-PosX ^ 2 / 2)
+
+        If X >= 0 Then
+            Return 1 - Z * (B1 * T + B2 * T ^ 2 + B3 * T ^ 3 + B4 * T ^ 4 + B5 * T ^ 5)
+        Else
+            Return Z * (B1 * T + B2 * T ^ 2 + B3 * T ^ 3 + B4 * T ^ 4 + B5 * T ^ 5)
+        End If
+    End Function
+
+    Private Function InvStdNormalCdf(ByRef Prob As Double) As Double
+        'The Inverse Standard Cumulative Normal distribution.
+        'https://www.source-code.biz/snippets/vbasic/9.htm
+
+        Const a1 = -39.6968302866538, a2 = 220.946098424521, a3 = -275.928510446969
+        Const a4 = 138.357751867269, a5 = -30.6647980661472, a6 = 2.50662827745924
+        Const b1 = -54.4760987982241, b2 = 161.585836858041, b3 = -155.698979859887
+        Const b4 = 66.8013118877197, b5 = -13.2806815528857, c1 = -0.00778489400243029
+        Const c2 = -0.322396458041136, c3 = -2.40075827716184, c4 = -2.54973253934373
+        Const c5 = 4.37466414146497, c6 = 2.93816398269878, d1 = 0.00778469570904146
+        Const d2 = 0.32246712907004, d3 = 2.445134137143, d4 = 3.75440866190742
+        Const PLow = 0.02425
+        Const PHigh = 1 - PLow
+        Dim q As Double
+        Dim r As Double
+        If Prob < 0 Or Prob > 1 Then
+            Message.AddWarning("Probability value not between 0 and 1: " & Prob & vbCrLf)
+            Return Double.NaN
+        ElseIf Prob < PLow Then
+            q = Math.Sqrt(-2 * Math.Log(Prob))
+            Return (((((c1 * q + c2) * q + c3) * q + c4) * q + c5) * q + c6) / ((((d1 * q + d2) * q + d3) * q + d4) * q + 1)
+
+        ElseIf Prob <= PHigh Then
+            q = Prob - 0.5 : r = q * q
+            Return (((((a1 * r + a2) * r + a3) * r + a4) * r + a5) * r + a6) * q / (((((b1 * r + b2) * r + b3) * r + b4) * r + b5) * r + 1)
+        Else
+            q = Math.Sqrt(-2 * Math.Log(1 - Prob))
+            Return -(((((c1 * q + c2) * q + c3) * q + c4) * q + c5) * q + c6) / ((((d1 * q + d2) * q + d3) * q + d4) * q + 1)
+        End If
+    End Function
+
+
 #End Region 'Form Methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -11500,6 +12120,18 @@ Public Class Main
     Private Sub txtAnnotProbNotBVal_LostFocus(sender As Object, e As EventArgs) Handles txtAnnotProbNotBVal.LostFocus
 
     End Sub
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

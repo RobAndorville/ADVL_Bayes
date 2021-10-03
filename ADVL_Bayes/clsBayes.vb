@@ -19435,7 +19435,7 @@ Public Class clsSettings
         End Set
     End Property
 
-    Private _decimalFormat As String = "" 'The format code used to display decimal probabilities. (N4 - Number displayed with thousands separator and 4 decimal places, F4 - Number displayed with 4 decimal places.)
+    Private _decimalFormat As String = "F3" 'The format code used to display decimal probabilities. (N4 - Number displayed with thousands separator and 4 decimal places, F4 - Number displayed with 4 decimal places.)
     Property DecimalFormat As String
         Get
             Return _decimalFormat
@@ -19454,7 +19454,7 @@ Public Class clsSettings
         End Set
     End Property
 
-    Private _percentFormat As String = "" 'The format code used to display percent probabilities.
+    Private _percentFormat As String = "F2" 'The format code used to display percent probabilities.
     Property PercentFormat As String
         Get
             Return _percentFormat
@@ -19473,7 +19473,7 @@ Public Class clsSettings
         End Set
     End Property
 
-    Private _samplesFormat As String = "" 'The format code used to display the number of samples.
+    Private _samplesFormat As String = "N2" 'The format code used to display the number of samples.
     Property SamplesFormat As String
         Get
             Return _samplesFormat

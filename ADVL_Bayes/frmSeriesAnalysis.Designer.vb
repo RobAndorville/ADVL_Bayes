@@ -22,9 +22,9 @@ Partial Class frmSeriesAnalysis
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea7 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend7 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.btnPlot = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -185,6 +185,12 @@ Partial Class frmSeriesAnalysis
         Me.btnExit = New System.Windows.Forms.Button()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
+        Me.btnDeleteAll = New System.Windows.Forms.Button()
+        Me.btnAddMean = New System.Windows.Forms.Button()
+        Me.AddP50 = New System.Windows.Forms.Button()
+        Me.Add90PctConfid = New System.Windows.Forms.Button()
+        Me.btn95PctConfid = New System.Windows.Forms.Button()
+        Me.btn99PctConfid = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -297,16 +303,16 @@ Partial Class frmSeriesAnalysis
         Me.Chart1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea7.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea7)
+        Legend7.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend7)
         Me.Chart1.Location = New System.Drawing.Point(6, 29)
         Me.Chart1.Name = "Chart1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
+        Series7.ChartArea = "ChartArea1"
+        Series7.Legend = "Legend1"
+        Series7.Name = "Series1"
+        Me.Chart1.Series.Add(Series7)
         Me.Chart1.Size = New System.Drawing.Size(726, 627)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -1535,6 +1541,12 @@ Partial Class frmSeriesAnalysis
         '
         'TabPage5
         '
+        Me.TabPage5.Controls.Add(Me.btn99PctConfid)
+        Me.TabPage5.Controls.Add(Me.btn95PctConfid)
+        Me.TabPage5.Controls.Add(Me.Add90PctConfid)
+        Me.TabPage5.Controls.Add(Me.AddP50)
+        Me.TabPage5.Controls.Add(Me.btnAddMean)
+        Me.TabPage5.Controls.Add(Me.btnDeleteAll)
         Me.TabPage5.Controls.Add(Me.btnDefault)
         Me.TabPage5.Controls.Add(Me.btnResetAnnotFmt)
         Me.TabPage5.Controls.Add(Me.btnEditColor)
@@ -1578,7 +1590,7 @@ Partial Class frmSeriesAnalysis
         'btnEditColor
         '
         Me.btnEditColor.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnEditColor.Location = New System.Drawing.Point(689, 423)
+        Me.btnEditColor.Location = New System.Drawing.Point(689, 435)
         Me.btnEditColor.Name = "btnEditColor"
         Me.btnEditColor.Size = New System.Drawing.Size(44, 22)
         Me.btnEditColor.TabIndex = 311
@@ -1588,7 +1600,7 @@ Partial Class frmSeriesAnalysis
         'btnEditFont
         '
         Me.btnEditFont.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnEditFont.Location = New System.Drawing.Point(643, 423)
+        Me.btnEditFont.Location = New System.Drawing.Point(643, 435)
         Me.btnEditFont.Name = "btnEditFont"
         Me.btnEditFont.Size = New System.Drawing.Size(40, 22)
         Me.btnEditFont.TabIndex = 310
@@ -1599,21 +1611,21 @@ Partial Class frmSeriesAnalysis
         '
         Me.txtEditTitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtEditTitle.Location = New System.Drawing.Point(114, 424)
+        Me.txtEditTitle.Location = New System.Drawing.Point(114, 436)
         Me.txtEditTitle.Name = "txtEditTitle"
         Me.txtEditTitle.Size = New System.Drawing.Size(523, 20)
         Me.txtEditTitle.TabIndex = 309
         '
         'NumericUpDown1
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(69, 424)
+        Me.NumericUpDown1.Location = New System.Drawing.Point(69, 436)
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(39, 20)
         Me.NumericUpDown1.TabIndex = 308
         '
         'btnEditTitle
         '
-        Me.btnEditTitle.Location = New System.Drawing.Point(3, 424)
+        Me.btnEditTitle.Location = New System.Drawing.Point(3, 436)
         Me.btnEditTitle.Name = "btnEditTitle"
         Me.btnEditTitle.Size = New System.Drawing.Size(60, 22)
         Me.btnEditTitle.TabIndex = 307
@@ -1623,7 +1635,7 @@ Partial Class frmSeriesAnalysis
         'btnChartTitleColor
         '
         Me.btnChartTitleColor.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnChartTitleColor.Location = New System.Drawing.Point(689, 380)
+        Me.btnChartTitleColor.Location = New System.Drawing.Point(689, 392)
         Me.btnChartTitleColor.Name = "btnChartTitleColor"
         Me.btnChartTitleColor.Size = New System.Drawing.Size(44, 22)
         Me.btnChartTitleColor.TabIndex = 306
@@ -1633,7 +1645,7 @@ Partial Class frmSeriesAnalysis
         'btnChartTitleFont
         '
         Me.btnChartTitleFont.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnChartTitleFont.Location = New System.Drawing.Point(643, 381)
+        Me.btnChartTitleFont.Location = New System.Drawing.Point(643, 393)
         Me.btnChartTitleFont.Name = "btnChartTitleFont"
         Me.btnChartTitleFont.Size = New System.Drawing.Size(40, 22)
         Me.btnChartTitleFont.TabIndex = 305
@@ -1644,14 +1656,14 @@ Partial Class frmSeriesAnalysis
         '
         Me.txtAddTitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtAddTitle.Location = New System.Drawing.Point(69, 382)
+        Me.txtAddTitle.Location = New System.Drawing.Point(69, 394)
         Me.txtAddTitle.Name = "txtAddTitle"
         Me.txtAddTitle.Size = New System.Drawing.Size(568, 20)
         Me.txtAddTitle.TabIndex = 292
         '
         'btnAddTitle
         '
-        Me.btnAddTitle.Location = New System.Drawing.Point(3, 381)
+        Me.btnAddTitle.Location = New System.Drawing.Point(3, 393)
         Me.btnAddTitle.Name = "btnAddTitle"
         Me.btnAddTitle.Size = New System.Drawing.Size(60, 22)
         Me.btnAddTitle.TabIndex = 291
@@ -1705,6 +1717,60 @@ Partial Class frmSeriesAnalysis
         Me.btnExit.Text = "Exit"
         Me.btnExit.UseVisualStyleBackColor = True
         '
+        'btnDeleteAll
+        '
+        Me.btnDeleteAll.Location = New System.Drawing.Point(3, 348)
+        Me.btnDeleteAll.Name = "btnDeleteAll"
+        Me.btnDeleteAll.Size = New System.Drawing.Size(60, 22)
+        Me.btnDeleteAll.TabIndex = 370
+        Me.btnDeleteAll.Text = "Delete All"
+        Me.btnDeleteAll.UseVisualStyleBackColor = True
+        '
+        'btnAddMean
+        '
+        Me.btnAddMean.Location = New System.Drawing.Point(69, 348)
+        Me.btnAddMean.Name = "btnAddMean"
+        Me.btnAddMean.Size = New System.Drawing.Size(67, 22)
+        Me.btnAddMean.TabIndex = 371
+        Me.btnAddMean.Text = "Add Mean"
+        Me.btnAddMean.UseVisualStyleBackColor = True
+        '
+        'AddP50
+        '
+        Me.AddP50.Location = New System.Drawing.Point(142, 348)
+        Me.AddP50.Name = "AddP50"
+        Me.AddP50.Size = New System.Drawing.Size(67, 22)
+        Me.AddP50.TabIndex = 372
+        Me.AddP50.Text = "Add P50"
+        Me.AddP50.UseVisualStyleBackColor = True
+        '
+        'Add90PctConfid
+        '
+        Me.Add90PctConfid.Location = New System.Drawing.Point(215, 348)
+        Me.Add90PctConfid.Name = "Add90PctConfid"
+        Me.Add90PctConfid.Size = New System.Drawing.Size(116, 22)
+        Me.Add90PctConfid.TabIndex = 373
+        Me.Add90PctConfid.Text = "Add 90% Confidence"
+        Me.Add90PctConfid.UseVisualStyleBackColor = True
+        '
+        'btn95PctConfid
+        '
+        Me.btn95PctConfid.Location = New System.Drawing.Point(337, 348)
+        Me.btn95PctConfid.Name = "btn95PctConfid"
+        Me.btn95PctConfid.Size = New System.Drawing.Size(116, 22)
+        Me.btn95PctConfid.TabIndex = 374
+        Me.btn95PctConfid.Text = "Add 95% Confidence"
+        Me.btn95PctConfid.UseVisualStyleBackColor = True
+        '
+        'btn99PctConfid
+        '
+        Me.btn99PctConfid.Location = New System.Drawing.Point(459, 348)
+        Me.btn99PctConfid.Name = "btn99PctConfid"
+        Me.btn99PctConfid.Size = New System.Drawing.Size(116, 22)
+        Me.btn99PctConfid.TabIndex = 375
+        Me.btn99PctConfid.Text = "Add 99% Confidence"
+        Me.btn99PctConfid.UseVisualStyleBackColor = True
+        '
         'frmSeriesAnalysis
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1714,7 +1780,7 @@ Partial Class frmSeriesAnalysis
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.btnExit)
         Me.Name = "frmSeriesAnalysis"
-        Me.Text = "frmSeriesAnalysis"
+        Me.Text = "Series Analysis"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
@@ -1905,4 +1971,10 @@ Partial Class frmSeriesAnalysis
     Friend WithEvents lblStats1 As Label
     Friend WithEvents cmbImageFormat As ComboBox
     Friend WithEvents btnCopyChart As Button
+    Friend WithEvents btn99PctConfid As Button
+    Friend WithEvents btn95PctConfid As Button
+    Friend WithEvents Add90PctConfid As Button
+    Friend WithEvents AddP50 As Button
+    Friend WithEvents btnAddMean As Button
+    Friend WithEvents btnDeleteAll As Button
 End Class

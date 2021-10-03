@@ -1371,6 +1371,13 @@
         '    Model_Rev_CDF      The model Reverse CDF probability of that value (for discrete distributions)
         '    Model_Prob_Mass    The model probability mass at that value        (for discrete distributions)
 
+        If Main.BayesSim.Data.Tables.Contains(SourceTableName) Then
+            'OK the required table exists.
+        Else
+            Main.Message.AddWarning("The simulation table named " & SourceTableName & " does not exist." & vbCrLf)
+            Exit Sub
+        End If
+
         Data.Clear()
         Data.Reset()
         cmbTableName.Items.Clear()
@@ -2160,6 +2167,13 @@
     Private Sub PlotDiscreteCharts()
         'Plot the CDF and PDF charts
         'The Discrete series version of the charts.
+
+        If Data.Tables.Contains("Histogram") Then
+
+        Else
+            Main.Message.AddWarning("The table named Histogram does not exist." & vbCrLf)
+            Exit Sub
+        End If
 
         Try
             'Plot the CDF of the Series Data:
@@ -4141,6 +4155,38 @@
         End Select
         Dim ChartPic As New Bitmap(myStream)
         Clipboard.SetDataObject(ChartPic)
+    End Sub
+
+    Private Sub btnDeleteAll_Click(sender As Object, e As EventArgs) Handles btnDeleteAll.Click
+        dgvAnnot.Rows.Clear()
+    End Sub
+
+    Private Sub btnAddMean_Click(sender As Object, e As EventArgs) Handles btnAddMean.Click
+        'Add the Mean Annotation to the list.
+        dgvAnnot.Rows.Add(True, True, "Mean", "", "Mean", GetProb(SeriesAverage), SeriesAverage)
+    End Sub
+
+    Private Sub AddP50_Click(sender As Object, e As EventArgs) Handles AddP50.Click
+        'Add the P50 Annotation to the list.
+        dgvAnnot.Rows.Add(True, True, "Probability", 0.5, "P50", 0.5, GetValue(0.5))
+    End Sub
+
+    Private Sub Add90PctConfid_Click(sender As Object, e As EventArgs) Handles Add90PctConfid.Click
+        'Add the 90% confidence interval Annotation to the list.
+        dgvAnnot.Rows.Add(True, True, "Probability", 0.05, "P05", 0.05, GetValue(0.05))
+        dgvAnnot.Rows.Add(True, True, "Probability", 0.95, "P95", 0.95, GetValue(0.95))
+    End Sub
+
+    Private Sub btn95PctConfid_Click(sender As Object, e As EventArgs) Handles btn95PctConfid.Click
+        'Add the 95% confidence interval Annotation to the list.
+        dgvAnnot.Rows.Add(True, True, "Probability", 0.025, "P02.5", 0.025, GetValue(0.025))
+        dgvAnnot.Rows.Add(True, True, "Probability", 0.975, "P97.5", 0.975, GetValue(0.975))
+    End Sub
+
+    Private Sub btn99PctConfid_Click(sender As Object, e As EventArgs) Handles btn99PctConfid.Click
+        'Add the 99% confidence interval Annotation to the list.
+        dgvAnnot.Rows.Add(True, True, "Probability", 0.005, "P00.5", 0.005, GetValue(0.005))
+        dgvAnnot.Rows.Add(True, True, "Probability", 0.995, "P99.5", 0.995, GetValue(0.995))
     End Sub
 
 
