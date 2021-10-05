@@ -25,6 +25,7 @@ limitations under the License.
 
 The Andorville™ Bayes software is used to demonstrate and apply Bayes theorem.
 
+For a description of the software, visit: http://www.andorville.com.au/Bayes.html 
 
 
 
