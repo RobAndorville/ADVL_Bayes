@@ -4,6 +4,11 @@ Public Class frmRocChart
 
 #Region " Variable Declarations - All the variables used in this form and this application." '=================================================================================================
 
+    Dim SelSensitivity As Double 'The selected test -  sensitivity
+    Dim SelSpecificity As Double 'The selected test -  sensitivity
+    Dim SelPrevalence As Double 'The selected test -  sensitivity
+    Dim SelSampleSize As Double 'The selected test -  sensitivity
+
 #End Region 'Variable Declarations ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -396,11 +401,32 @@ Public Class frmRocChart
 
         'If dgvRocData.RowCount < RowNo Then
         If RowNo < dgvRocData.RowCount Then
-            txtSensitivity.Text = dgvRocData.Rows(RowNo).Cells(4).Value
-            txtSpecificity.Text = dgvRocData.Rows(RowNo).Cells(2).Value
-            If chkLockPrevalence.Checked = False Then txtPrevalence.Text = dgvRocData.Rows(RowNo).Cells(6).Value
-            If chkLockSampleSize.Checked = False Then txtSampleSize.Text = dgvRocData.Rows(RowNo).Cells(7).Value
+            SelSensitivity = dgvRocData.Rows(RowNo).Cells(4).Value
+            txtSensitivity.Text = Main.ProbString(SelSensitivity)
+            SelSpecificity = dgvRocData.Rows(RowNo).Cells(2).Value
+            txtSpecificity.Text = Main.ProbString(SelSpecificity)
+            If chkLockPrevalence.Checked = False Then
+                SelPrevalence = dgvRocData.Rows(RowNo).Cells(6).Value
+                txtPrevalence.Text = Main.ProbString(SelPrevalence)
+            End If
+            If chkLockSampleSize.Checked = False Then
+                SelSampleSize = dgvRocData.Rows(RowNo).Cells(7).Value
+                txtSampleSize.Text = Main.SampString(SelSampleSize)
+            End If
             cmbPointColor.SelectedIndex = cmbPointColor.FindStringExact(dgvRocData.Rows(RowNo).Cells(5).Value)
+
+            'Old Code:
+            'If Main.Bayes.Settings.ProbabilityMeasure = "Percent" Then
+            '    txtSensitivity.Text = dgvRocData.Rows(RowNo).Cells(4).Value * 100 & "%"
+            '    txtSpecificity.Text = dgvRocData.Rows(RowNo).Cells(2).Value * 100 & "%"
+            '    If chkLockPrevalence.Checked = False Then txtPrevalence.Text = dgvRocData.Rows(RowNo).Cells(6).Value * 100 & "%"
+            'Else
+            '    txtSensitivity.Text = dgvRocData.Rows(RowNo).Cells(4).Value
+            '    txtSpecificity.Text = dgvRocData.Rows(RowNo).Cells(2).Value
+            '    If chkLockPrevalence.Checked = False Then txtPrevalence.Text = dgvRocData.Rows(RowNo).Cells(6).Value
+            'End If
+            'If chkLockSampleSize.Checked = False Then txtSampleSize.Text = dgvRocData.Rows(RowNo).Cells(7).Value
+            'cmbPointColor.SelectedIndex = cmbPointColor.FindStringExact(dgvRocData.Rows(RowNo).Cells(5).Value)
         End If
     End Sub
 
@@ -418,56 +444,48 @@ Public Class frmRocChart
         Dim FP As Double 'False Positive survey test results 
         Dim FN As Double 'False Negative survey test results 
 
-        'Survey analysis results:
-        Dim Sensitivity As Double '(aka Recall) How many of thoose that are positive tested positive.
-        Dim Specificity As Double 'How many of those that are negative tested negative.
-        Dim Prevalence As Double  'The proportion of the population with the specified condition.
-        Dim SampleSize As Double 'The number of samples used in the survey.
+        'UPDATE: Now use SelSensitivity, SelSpecificity etc
+        ''Survey analysis results:
+        'Dim Sensitivity As Double '(aka Recall) How many of thoose that are positive tested positive.
+        'Dim Specificity As Double 'How many of those that are negative tested negative.
+        'Dim Prevalence As Double  'The proportion of the population with the specified condition.
+        'Dim SampleSize As Double 'The number of samples used in the survey.
 
-        If txtSampleSize.Text = "" Then Exit Sub
-        SampleSize = txtSampleSize.Text
-        If Main.Bayes.Settings.ProbabilityMeasure = "Percent" Then
-            If txtSensitivity.Text = "" Then Exit Sub
-            Sensitivity = txtSensitivity.Text.Replace("%", "")
-            Sensitivity /= 100
-            If txtSpecificity.Text = "" Then Exit Sub
-            Specificity = txtSpecificity.Text.Replace("%", "")
-            Specificity /= 100
-            If txtPrevalence.Text = "" Then Exit Sub
-            Prevalence = txtPrevalence.Text.Replace("%", "")
-            Prevalence /= 100
-        Else
-            If txtSensitivity.Text = "" Then Exit Sub
-            Sensitivity = txtSensitivity.Text
-            If txtSpecificity.Text = "" Then Exit Sub
-            Specificity = txtSpecificity.Text
-            If txtPrevalence.Text = "" Then Exit Sub
-            Prevalence = txtPrevalence.Text
-        End If
+        If txtSampleSize.Text.Trim = "" Then Exit Sub
 
-        TP = Prevalence * SampleSize * Sensitivity
-        TN = SampleSize * Specificity - Prevalence * SampleSize * Specificity
-        FP = SampleSize - Prevalence * SampleSize - SampleSize * Specificity + Prevalence * SampleSize * Specificity
-        FN = Prevalence * SampleSize - Prevalence * SampleSize * Sensitivity
+        'SampleSize = txtSampleSize.Text
+        'If Main.Bayes.Settings.ProbabilityMeasure = "Percent" Then
+        '    If txtSensitivity.Text = "" Then Exit Sub
+        '    Sensitivity = txtSensitivity.Text.Replace("%", "")
+        '    Sensitivity /= 100
+        '    If txtSpecificity.Text = "" Then Exit Sub
+        '    Specificity = txtSpecificity.Text.Replace("%", "")
+        '    Specificity /= 100
+        '    If txtPrevalence.Text = "" Then Exit Sub
+        '    Prevalence = txtPrevalence.Text.Replace("%", "")
+        '    Prevalence /= 100
+        'Else
+        '    If txtSensitivity.Text = "" Then Exit Sub
+        '    Sensitivity = txtSensitivity.Text
+        '    If txtSpecificity.Text = "" Then Exit Sub
+        '    Specificity = txtSpecificity.Text
+        '    If txtPrevalence.Text = "" Then Exit Sub
+        '    Prevalence = txtPrevalence.Text
+        'End If
+
+        'TP = Prevalence * SampleSize * Sensitivity
+        'TN = SampleSize * Specificity - Prevalence * SampleSize * Specificity
+        'FP = SampleSize - Prevalence * SampleSize - SampleSize * Specificity + Prevalence * SampleSize * Specificity
+        'FN = Prevalence * SampleSize - Prevalence * SampleSize * Sensitivity
 
         'Precision = TP / (TP + FP) 'How many of those testing positive are truly positive.
         'Accuracy = (TP + TN) / (TP + FP + FN + TN) 'How many of those tested were correctly identified as positive or negative.
         'F1_Score = 2 * Sensitivity * Precision / (Sensitivity + Precision) 'The harmonic mean of the Precision and Sensitivity.
 
-        ''Display formatted values:
-        'If Main.Bayes.Settings.ProbabilityMeasure = "Percent" Then
-        '    txtCalcPrecision.Text = Format(Precision * 100, Bayes.Settings.PercentFormat) & "%"
-        '    txtCalcAccuracy.Text = Format(Accuracy * 100, Bayes.Settings.PercentFormat) & "%"
-        '    'txtCalcSensitivity.Text = Format(Sensitivity * 100, Bayes.Settings.PercentFormat) & "%"
-        '    'txtCalcSpecificity.Text = Format(Specificity * 100, Bayes.Settings.PercentFormat) & "%"
-        '    txtCalcF1Score.Text = Format(F1_Score * 100, Bayes.Settings.PercentFormat) & "%"
-        'Else
-        '    txtCalcPrecision.Text = Format(Precision, Bayes.Settings.DecimalFormat)
-        '    txtCalcAccuracy.Text = Format(Accuracy, Bayes.Settings.DecimalFormat)
-        '    'txtCalcSensitivity.Text = Format(Sensitivity, Bayes.Settings.DecimalFormat)
-        '    'txtCalcSpecificity.Text = Format(Specificity, Bayes.Settings.DecimalFormat)
-        '    txtCalcF1Score.Text = Format(F1_Score, Bayes.Settings.DecimalFormat)
-        'End If
+        TP = SelPrevalence * SelSampleSize * SelSensitivity
+        TN = SelSampleSize * SelSpecificity - SelPrevalence * SelSampleSize * SelSpecificity
+        FP = SelSampleSize - SelPrevalence * SelSampleSize - SelSampleSize * SelSpecificity + SelPrevalence * SelSampleSize * SelSpecificity
+        FN = SelPrevalence * SelSampleSize - SelPrevalence * SelSampleSize * SelSensitivity
 
         txtTP.Text = Format(TP, Main.Bayes.Settings.SamplesFormat)
         txtTN.Text = Format(TN, Main.Bayes.Settings.SamplesFormat)

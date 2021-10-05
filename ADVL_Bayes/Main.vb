@@ -1941,7 +1941,8 @@ Public Class Main
             'RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Format(Bayes.Performance.Specificity, "F4"), Format(1 - Bayes.Performance.Specificity, "F4"), Format(Bayes.Performance.Sensitivity, "F4"), "Red")
             'RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Format(Bayes.Performance.Specificity, "F4"), Format(1 - Bayes.Performance.Specificity, "F4"), Format(Bayes.Performance.Sensitivity, "F4"), cmbRocColor.SelectedItem.ToString)
             'RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Format(Bayes.Performance.Specificity, "F4"), Format(1 - Bayes.Performance.Specificity, "F4"), Format(Bayes.Performance.Sensitivity, "F4"), cmbRocColor.SelectedItem.ToString, Format(Bayes.Performance.Prevalence, "F4"), Format(Bayes.SampleSize, "F2"))
-            RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Format(Bayes.Performance.Specificity, "F4"), Format(1 - Bayes.Performance.Specificity, "F4"), Format(Bayes.Performance.Sensitivity, "F4"), cmbRocColor.SelectedItem.ToString, Format(Bayes.Performance.Prevalence, "F4"), Format(Bayes.SampleSize.Value, "F2"))
+            'RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Format(Bayes.Performance.Specificity, "F4"), Format(1 - Bayes.Performance.Specificity, "F4"), Format(Bayes.Performance.Sensitivity, "F4"), cmbRocColor.SelectedItem.ToString, Format(Bayes.Performance.Prevalence, "F4"), Format(Bayes.SampleSize.Value, "F2"))
+            RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Bayes.Performance.Specificity, 1 - Bayes.Performance.Specificity, Bayes.Performance.Sensitivity, cmbRocColor.SelectedItem.ToString, Bayes.Performance.Prevalence, Bayes.SampleSize.Value) 'NOTE: Format statement not used to preserve full number resolution.
             RocChart.PlotChart()
         Else
             RocChart.Show()
@@ -1950,7 +1951,8 @@ Public Class Main
             'RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Bayes.Performance.Specificity, 1 - Bayes.Performance.Specificity, Bayes.Performance.Sensitivity)
             'RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Format(Bayes.Performance.Specificity, "F4"), Format(1 - Bayes.Performance.Specificity, "F4"), Format(Bayes.Performance.Sensitivity, "F4"), "Red")
             'RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Format(Bayes.Performance.Specificity, "F4"), Format(1 - Bayes.Performance.Specificity, "F4"), Format(Bayes.Performance.Sensitivity, "F4"), cmbRocColor.SelectedItem.ToString)
-            RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Format(Bayes.Performance.Specificity, "F4"), Format(1 - Bayes.Performance.Specificity, "F4"), Format(Bayes.Performance.Sensitivity, "F4"), cmbRocColor.SelectedItem.ToString, Format(Bayes.Performance.Prevalence, "F4"), Format(Bayes.SampleSize.Value, "F2"))
+            'RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Format(Bayes.Performance.Specificity, "F4"), Format(1 - Bayes.Performance.Specificity, "F4"), Format(Bayes.Performance.Sensitivity, "F4"), cmbRocColor.SelectedItem.ToString, Format(Bayes.Performance.Prevalence, "F4"), Format(Bayes.SampleSize.Value, "F2"))
+            RocChart.dgvRocData.Rows.Add(Bayes.Name, Bayes.Name, Bayes.Performance.Specificity, 1 - Bayes.Performance.Specificity, Bayes.Performance.Sensitivity, cmbRocColor.SelectedItem.ToString, Bayes.Performance.Prevalence, Bayes.SampleSize.Value) 'NOTE: Format statement not used to preserve full number resolution.
             RocChart.PlotChart()
         End If
     End Sub
@@ -1980,7 +1982,8 @@ Public Class Main
             RocChart.Show()
             RocChart.dgvRocData.Rows.Clear()
             'RocChart.dgvRocData.Rows.Add(txtTestName.Text, txtPointLabel.Text, Format(Specificity, "F4"), Format(1 - Specificity, "F4"), Format(Sensitivity, "F4"), cmbCalcRocColor.SelectedItem.ToString)
-            RocChart.dgvRocData.Rows.Add(txtTestName.Text, txtPointLabel.Text, Format(Specificity, "F4"), Format(1 - Specificity, "F4"), Format(Sensitivity, "F4"), cmbCalcRocColor.SelectedItem.ToString, Format(Prevalence, "F4"), SampleSize)
+            'RocChart.dgvRocData.Rows.Add(txtTestName.Text, txtPointLabel.Text, Format(Specificity, "F4"), Format(1 - Specificity, "F4"), Format(Sensitivity, "F4"), cmbCalcRocColor.SelectedItem.ToString, Format(Prevalence, "F4"), SampleSize)
+            RocChart.dgvRocData.Rows.Add(txtTestName.Text, txtPointLabel.Text, Specificity, 1 - Specificity, Sensitivity, cmbCalcRocColor.SelectedItem.ToString, Prevalence, SampleSize) 'NOTE: Format statement not used to preserve full number resolution.
             RocChart.PlotChart()
         Else
             RocChart.Show()
@@ -1988,7 +1991,8 @@ Public Class Main
             'RocChart.dgvRocData.Rows.Clear()
             RocChart.dgvRocData.AllowUserToAddRows = False
             'RocChart.dgvRocData.Rows.Add(txtTestName.Text, txtPointLabel.Text, Format(Specificity, "F4"), Format(1 - Specificity, "F4"), Format(Sensitivity, "F4"), cmbCalcRocColor.SelectedItem.ToString)
-            RocChart.dgvRocData.Rows.Add(txtTestName.Text, txtPointLabel.Text, Format(Specificity, "F4"), Format(1 - Specificity, "F4"), Format(Sensitivity, "F4"), cmbCalcRocColor.SelectedItem.ToString, Format(Prevalence, "F4"), SampleSize)
+            'RocChart.dgvRocData.Rows.Add(txtTestName.Text, txtPointLabel.Text, Format(Specificity, "F4"), Format(1 - Specificity, "F4"), Format(Sensitivity, "F4"), cmbCalcRocColor.SelectedItem.ToString, Format(Prevalence, "F4"), SampleSize)
+            RocChart.dgvRocData.Rows.Add(txtTestName.Text, txtPointLabel.Text, Specificity, 1 - Specificity, Sensitivity, cmbCalcRocColor.SelectedItem.ToString, Prevalence, SampleSize) 'NOTE: Format statement not used to preserve full number resolution.
             RocChart.dgvRocData.AllowUserToAddRows = True
             RocChart.PlotChart()
         End If
@@ -8703,7 +8707,8 @@ Public Class Main
     End Sub
 
     'Use .FormattedValue instead. This function produces some incorrenct formatting!!!
-    Private Function ProbString(ByRef DecimalProb As Double) As String
+    'Private Function ProbString(ByRef DecimalProb As Double) As String
+    Public Function ProbString(ByRef DecimalProb As Double) As String
         'Return the formatted probability text corrersponding to the given decimal probability value.
         'The ProbabilityMeasure, DecimalFormat and PercentFormat settings in Bayes will be used for formatting.
 
@@ -8716,7 +8721,8 @@ Public Class Main
         End If
     End Function
 
-    Private Function SampString(ByRef Samples As Double) As String
+    'Private Function SampString(ByRef Samples As Double) As String
+    Public Function SampString(ByRef Samples As Double) As String
         'Return the formatted sample count text corrersponding to the given sample count value.
         'The SamplesFormat setting in Bayes will be used for formatting.
 
