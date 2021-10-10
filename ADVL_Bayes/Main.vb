@@ -264,6 +264,10 @@ Public Class Main
 
     Public WithEvents SimData As frmTable
 
+    Public WithEvents bgwCancelConn As New System.ComponentModel.BackgroundWorker 'Used to cancel the Client.Connect while it is trying to connect.
+    Dim myLock As New Object 'Lock object used with SyncLock in bgwCancelConn.
+    Private ConnCancelled As Boolean = False 'True if the connection attempt has been cancelled.
+
 #End Region 'Variable Declarations ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -1466,6 +1470,9 @@ Public Class Main
 
         Message.AddText("------------------- Started OK -------------------------------------------------------------------------- " & vbCrLf & vbCrLf, "Heading")
 
+        bgwCancelConn.WorkerSupportsCancellation = True
+        bgwCancelConn.RunWorkerAsync() 'Show the cancel dialog.
+
         If StartupConnectionName = "" Then
             If Project.ConnectOnOpen Then
                 ConnectToComNet() 'The Project is set to connect when it is opened.
@@ -1475,8 +1482,14 @@ Public Class Main
                 'Don't connect to ComNet.
             End If
         Else
-            'Connect to ComNet using the connection name StartupConnectionName.
-            ConnectToComNet(StartupConnectionName)
+            ConnectToComNet(StartupConnectionName) 'Connect to ComNet using the connection name StartupConnectionName.
+        End If
+
+        If bgwCancelConn.IsBusy Then
+            SendKeys.Send("{ESC}") 'Close the MessageBox
+            bgwCancelConn.CancelAsync()
+            bgwCancelConn.Dispose()
+            Message.Add("Cancel Connection Dialog stopped." & vbCrLf)
         End If
 
         'Get the Application Version Information:
@@ -3393,14 +3406,19 @@ Public Class Main
             'The Message Service is Running.
         Else 'The Message Service is NOT running'
             'Start the Andorville™ Network:
-            If AdvlNetworkAppPath = "" Then
-                Message.AddWarning("Andorville™ Network application path is unknown." & vbCrLf)
+            If ConnCancelled = True Then
+                Message.AddWarning("The connection attempt has been cancelled." & vbCrLf)
+                Exit Sub
             Else
-                If System.IO.File.Exists(AdvlNetworkExePath) Then 'OK to start the Message Service application:
-                    Shell(Chr(34) & AdvlNetworkExePath & Chr(34), AppWinStyle.NormalFocus) 'Start Message Service application with no argument
+                If AdvlNetworkAppPath = "" Then
+                    Message.AddWarning("Andorville™ Network application path is unknown." & vbCrLf)
                 Else
-                    'Incorrect Message Service Executable path.
-                    Message.AddWarning("Andorville™ Network exe file not found. Service not started." & vbCrLf)
+                    If System.IO.File.Exists(AdvlNetworkExePath) Then 'OK to start the Message Service application:
+                        Shell(Chr(34) & AdvlNetworkExePath & Chr(34), AppWinStyle.NormalFocus) 'Start Message Service application with no argument
+                    Else
+                        'Incorrect Message Service Executable path.
+                        Message.AddWarning("Andorville™ Network exe file not found. Service not started." & vbCrLf)
+                    End If
                 End If
             End If
         End If
@@ -3500,6 +3518,10 @@ Public Class Main
         'END UPDATE
 
         If ConnectedToComNet = False Then
+            If ConnCancelled = True Then
+                Message.AddWarning("The connection attempt has been cancelled." & vbCrLf)
+                Exit Sub
+            End If
             If IsNothing(client) Then
                 client = New ServiceReference1.MsgServiceClient(New System.ServiceModel.InstanceContext(New MsgServiceCallback))
             End If
@@ -3549,6 +3571,19 @@ Public Class Main
             End If
         Else
             Message.AddWarning("Already connected to the Andorville™ Network (Message Service)." & vbCrLf)
+        End If
+    End Sub
+
+    Private Sub bgwCancelConn_DoWork(sender As Object, e As DoWorkEventArgs) Handles bgwCancelConn.DoWork
+        'Show a MessageBox with the option to run the application in Stand-alone mode.
+        Dim dr As System.Windows.Forms.DialogResult
+        dr = MessageBox.Show("Press OK to run in Stand-alone mode.", "Attempting to connect to the Message Service.", MessageBoxButtons.OKCancel)
+        If dr = System.Windows.Forms.DialogResult.OK Then
+            SyncLock myLock
+                ConnCancelled = True
+                client.Close()
+                Debug.WriteLine("Client Closed")
+            End SyncLock
         End If
     End Sub
 
