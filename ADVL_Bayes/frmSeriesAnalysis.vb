@@ -949,7 +949,7 @@
         rbCdf.Checked = True 'Select ShowInverseCdf = False by default.
         chkShowModel.Checked = True 'Show Distribution Model by default.
 
-        'Selection of image formats used to save the charst to the clipboard:
+        'Selection of image formats used to save the chart to the clipboard:
         cmbImageFormat.Items.Add("Jpeg")
         cmbImageFormat.Items.Add("Png")
         cmbImageFormat.Items.Add("Bmp")
@@ -1964,7 +1964,8 @@
                 Chart1.Titles(2).Text = "Probability Mass Function"
                 Chart1.ChartAreas("HistArea").AxisY.Title = "Probability Mass"
             Else
-                Chart1.Series("PDF Histogram").Points.DataBindXY(Data.Tables("Histogram").DefaultView, "Mid_Interval", Data.Tables("Histogram").DefaultView, "Prob_Density")
+                'Chart1.Series("PDF Histogram").Points.DataBindXY(Data.Tables("Histogram").DefaultView, "Mid_Interval", Data.Tables("Histogram").DefaultView, "Prob_Density")
+                Chart1.Series("PDF Histogram").Points.DataBindXY(Data.Tables("Histogram").DefaultView, "Value", Data.Tables("Histogram").DefaultView, "Prob_Density") 'UPDATE 15May22 - Use Value instead of Mid_Interval ????
                 Chart1.Titles(2).Text = "Probability Density Histogram"
                 Chart1.ChartAreas("HistArea").AxisY.Title = "Probability Density"
             End If
@@ -2323,7 +2324,8 @@
                 Chart1.ChartAreas("HistArea").AxisY.Title = "Probability Mass"
 
             Else
-                Chart1.Series("PDF Histogram").Points.DataBindXY(Data.Tables("Histogram").DefaultView, "Mid_Interval", Data.Tables("Histogram").DefaultView, "Prob_Density")
+                'Chart1.Series("PDF Histogram").Points.DataBindXY(Data.Tables("Histogram").DefaultView, "Mid_Interval", Data.Tables("Histogram").DefaultView, "Prob_Density")
+                Chart1.Series("PDF Histogram").Points.DataBindXY(Data.Tables("Histogram").DefaultView, "Value", Data.Tables("Histogram").DefaultView, "Prob_Density") 'UPDATE 15May22 - Use Value instead of Mid_Interval ????
                 Chart1.Titles(2).Text = "Probability Density Histogram"
                 Chart1.ChartAreas("HistArea").AxisY.Title = "Probability Density"
             End If
@@ -3629,16 +3631,20 @@
             End If
         Else
             If AdjacentBars = 0 Then
-                Dim Row1 As DataRow = Data.Tables("Histogram").Select("Mid_Interval <= '" & Value & "'").Last
-                Dim Row2 As DataRow = Data.Tables("Histogram").Select("Mid_Interval >= '" & Value & "'").First
+                'Dim Row1 As DataRow = Data.Tables("Histogram").Select("Mid_Interval <= '" & Value & "'").Last
+                Dim Row1 As DataRow = Data.Tables("Histogram").Select("Value <= '" & Value & "'").Last 'UPDATE 15May22 - Use Value instead of Mid_Interval ????
+                'Dim Row2 As DataRow = Data.Tables("Histogram").Select("Mid_Interval >= '" & Value & "'").First
+                Dim Row2 As DataRow = Data.Tables("Histogram").Select("Value >= '" & Value & "'").First 'UPDATE 15May22 - Use Value instead of Mid_Interval ????
                 If Row1.Item("Probability") > Row2.Item("Probability") Then
                     Return Row1.Item("Probability")
                 Else
                     Return Row2.Item("Probability")
                 End If
             Else
-                Dim Row1 As IEnumerable(Of DataRow) = Data.Tables("Histogram").Select("Mid_Interval <= '" & Value & "'", "Mid_Interval DESC").Take(AdjacentBars + 1)
-                Dim Row2 As IEnumerable(Of DataRow) = Data.Tables("Histogram").Select("Mid_Interval >= '" & Value & "'", "Mid_Interval ASC").Take(AdjacentBars + 1)
+                'Dim Row1 As IEnumerable(Of DataRow) = Data.Tables("Histogram").Select("Mid_Interval <= '" & Value & "'", "Mid_Interval DESC").Take(AdjacentBars + 1)
+                Dim Row1 As IEnumerable(Of DataRow) = Data.Tables("Histogram").Select("Value <= '" & Value & "'", "Value DESC").Take(AdjacentBars + 1) 'UPDATE 15May22 - Use Value instead of Mid_Interval ????
+                'Dim Row2 As IEnumerable(Of DataRow) = Data.Tables("Histogram").Select("Mid_Interval >= '" & Value & "'", "Mid_Interval ASC").Take(AdjacentBars + 1)
+                Dim Row2 As IEnumerable(Of DataRow) = Data.Tables("Histogram").Select("Value >= '" & Value & "'", "Value ASC").Take(AdjacentBars + 1) 'UPDATE 15May22 - Use Value instead of Mid_Interval ????
                 If Row1(AdjacentBars).Item("Probability") > Row2(AdjacentBars).Item("Probability") Then
                     Return Row1(AdjacentBars).Item("Probability")
                 Else
@@ -3674,10 +3680,13 @@
                 End If
 
             Else
-                Dim Row1 As DataRow = Data.Tables("Histogram").Select("Mid_Interval <= '" & Value & "'").Last
-                Dim Row2 As DataRow = Data.Tables("Histogram").Select("Mid_Interval >= '" & Value & "'").First
+                'Dim Row1 As DataRow = Data.Tables("Histogram").Select("Mid_Interval <= '" & Value & "'").Last
+                Dim Row1 As DataRow = Data.Tables("Histogram").Select("Value <= '" & Value & "'").Last 'UPDATE 15May22 - Use Value instead of Mid_Interval ????
+                'Dim Row2 As DataRow = Data.Tables("Histogram").Select("Mid_Interval >= '" & Value & "'").First
+                Dim Row2 As DataRow = Data.Tables("Histogram").Select("Value >= '" & Value & "'").First 'UPDATE 15May22 - Use Value instead of Mid_Interval ????
 
-                If Math.Abs(Value - Row1.Item("Mid_Interval")) < Math.Abs(Value - Row2.Item("Mid_Interval")) Then 'Row1 is closer to Value
+                'If Math.Abs(Value - Row1.Item("Mid_Interval")) < Math.Abs(Value - Row2.Item("Mid_Interval")) Then 'Row1 is closer to Value
+                If Math.Abs(Value - Row1.Item("Value")) < Math.Abs(Value - Row2.Item("Value")) Then 'Row1 is closer to Value 'UPDATE 15May22 - Use Value instead of Mid_Interval ????
                     Return Row1.Item("Probability")
                 Else 'Row2 is closer to Value
                     Return Row2.Item("Probability")

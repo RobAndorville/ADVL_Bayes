@@ -968,7 +968,7 @@ Partial Class Main
         'btnExit
         '
         Me.btnExit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnExit.Location = New System.Drawing.Point(1318, 12)
+        Me.btnExit.Location = New System.Drawing.Point(1436, 12)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(48, 22)
         Me.btnExit.TabIndex = 7
@@ -978,7 +978,7 @@ Partial Class Main
         'btnMessages
         '
         Me.btnMessages.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnMessages.Location = New System.Drawing.Point(1178, 12)
+        Me.btnMessages.Location = New System.Drawing.Point(1296, 12)
         Me.btnMessages.Name = "btnMessages"
         Me.btnMessages.Size = New System.Drawing.Size(72, 22)
         Me.btnMessages.TabIndex = 33
@@ -990,7 +990,7 @@ Partial Class Main
         Me.btnOnline.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnOnline.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnOnline.ForeColor = System.Drawing.Color.Red
-        Me.btnOnline.Location = New System.Drawing.Point(1256, 12)
+        Me.btnOnline.Location = New System.Drawing.Point(1374, 12)
         Me.btnOnline.Name = "btnOnline"
         Me.btnOnline.Size = New System.Drawing.Size(56, 22)
         Me.btnOnline.TabIndex = 36
@@ -1001,7 +1001,7 @@ Partial Class Main
         'btnAppInfo
         '
         Me.btnAppInfo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAppInfo.Location = New System.Drawing.Point(1077, 12)
+        Me.btnAppInfo.Location = New System.Drawing.Point(1195, 12)
         Me.btnAppInfo.Name = "btnAppInfo"
         Me.btnAppInfo.Size = New System.Drawing.Size(95, 22)
         Me.btnAppInfo.TabIndex = 45
@@ -1028,7 +1028,7 @@ Partial Class Main
         Me.TabControl1.Location = New System.Drawing.Point(12, 40)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1354, 1202)
+        Me.TabControl1.Size = New System.Drawing.Size(1472, 1202)
         Me.TabControl1.TabIndex = 48
         '
         'TabPage3
@@ -1058,7 +1058,7 @@ Partial Class Main
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1346, 1176)
+        Me.TabPage1.Size = New System.Drawing.Size(1464, 1176)
         Me.TabPage1.TabIndex = 1
         Me.TabPage1.Text = "Bayesian Analysis"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -1079,8 +1079,8 @@ Partial Class Main
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.SplitContainer3)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1334, 1164)
-        Me.SplitContainer1.SplitterDistance = 770
+        Me.SplitContainer1.Size = New System.Drawing.Size(1452, 1164)
+        Me.SplitContainer1.SplitterDistance = 838
         Me.SplitContainer1.TabIndex = 33
         '
         'SplitContainer2
@@ -1105,7 +1105,7 @@ Partial Class Main
         Me.SplitContainer2.Panel2.Controls.Add(Me.btnCopyDiagram)
         Me.SplitContainer2.Panel2.Controls.Add(Me.Label43)
         Me.SplitContainer2.Panel2.Controls.Add(Me.pbVenn)
-        Me.SplitContainer2.Size = New System.Drawing.Size(770, 1164)
+        Me.SplitContainer2.Size = New System.Drawing.Size(838, 1164)
         Me.SplitContainer2.SplitterDistance = 688
         Me.SplitContainer2.TabIndex = 0
         '
@@ -1126,7 +1126,7 @@ Partial Class Main
         Me.TabControl2.Location = New System.Drawing.Point(3, 3)
         Me.TabControl2.Name = "TabControl2"
         Me.TabControl2.SelectedIndex = 0
-        Me.TabControl2.Size = New System.Drawing.Size(765, 678)
+        Me.TabControl2.Size = New System.Drawing.Size(833, 678)
         Me.TabControl2.TabIndex = 9
         '
         'TabPage6
@@ -2336,7 +2336,7 @@ Partial Class Main
         Me.txtEventB.Location = New System.Drawing.Point(79, 81)
         Me.txtEventB.Name = "txtEventB"
         Me.txtEventB.ReadOnly = True
-        Me.txtEventB.Size = New System.Drawing.Size(694, 20)
+        Me.txtEventB.Size = New System.Drawing.Size(732, 20)
         Me.txtEventB.TabIndex = 3
         '
         'Label7
@@ -2363,7 +2363,7 @@ Partial Class Main
         Me.txtEventA.Location = New System.Drawing.Point(79, 55)
         Me.txtEventA.Name = "txtEventA"
         Me.txtEventA.ReadOnly = True
-        Me.txtEventA.Size = New System.Drawing.Size(694, 20)
+        Me.txtEventA.Size = New System.Drawing.Size(732, 20)
         Me.txtEventA.TabIndex = 1
         '
         'Label15
@@ -5070,7 +5070,7 @@ Partial Class Main
         Me.TabPage9.Controls.Add(Me.Label97)
         Me.TabPage9.Location = New System.Drawing.Point(4, 22)
         Me.TabPage9.Name = "TabPage9"
-        Me.TabPage9.Size = New System.Drawing.Size(757, 652)
+        Me.TabPage9.Size = New System.Drawing.Size(825, 652)
         Me.TabPage9.TabIndex = 5
         Me.TabPage9.Text = "Simulation"
         Me.TabPage9.UseVisualStyleBackColor = True
@@ -5092,8 +5092,8 @@ Partial Class Main
         'SplitContainer4.Panel2
         '
         Me.SplitContainer4.Panel2.Controls.Add(Me.TabControl4)
-        Me.SplitContainer4.Size = New System.Drawing.Size(751, 620)
-        Me.SplitContainer4.SplitterDistance = 265
+        Me.SplitContainer4.Size = New System.Drawing.Size(819, 620)
+        Me.SplitContainer4.SplitterDistance = 288
         Me.SplitContainer4.TabIndex = 1
         '
         'cmbSimImageFormat
@@ -5121,7 +5121,7 @@ Partial Class Main
         Me.pbSim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.pbSim.Location = New System.Drawing.Point(3, 31)
         Me.pbSim.Name = "pbSim"
-        Me.pbSim.Size = New System.Drawing.Size(259, 586)
+        Me.pbSim.Size = New System.Drawing.Size(282, 586)
         Me.pbSim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbSim.TabIndex = 0
         Me.pbSim.TabStop = False
@@ -5137,7 +5137,7 @@ Partial Class Main
         Me.TabControl4.Location = New System.Drawing.Point(3, 5)
         Me.TabControl4.Name = "TabControl4"
         Me.TabControl4.SelectedIndex = 0
-        Me.TabControl4.Size = New System.Drawing.Size(476, 612)
+        Me.TabControl4.Size = New System.Drawing.Size(521, 612)
         Me.TabControl4.TabIndex = 23
         '
         'TabPage13
@@ -5477,7 +5477,7 @@ Partial Class Main
         Me.TabPage15.Controls.Add(Me.GroupBox12)
         Me.TabPage15.Location = New System.Drawing.Point(4, 22)
         Me.TabPage15.Name = "TabPage15"
-        Me.TabPage15.Size = New System.Drawing.Size(618, 586)
+        Me.TabPage15.Size = New System.Drawing.Size(468, 586)
         Me.TabPage15.TabIndex = 2
         Me.TabPage15.Text = "Results"
         Me.TabPage15.UseVisualStyleBackColor = True
@@ -5847,7 +5847,7 @@ Partial Class Main
         Me.TabPage14.Location = New System.Drawing.Point(4, 22)
         Me.TabPage14.Name = "TabPage14"
         Me.TabPage14.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage14.Size = New System.Drawing.Size(618, 586)
+        Me.TabPage14.Size = New System.Drawing.Size(513, 586)
         Me.TabPage14.TabIndex = 1
         Me.TabPage14.Text = "Display"
         Me.TabPage14.UseVisualStyleBackColor = True
@@ -5882,7 +5882,7 @@ Partial Class Main
         'txtSimProbAandNotBVal
         '
         Me.txtSimProbAandNotBVal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbAandNotBVal.Location = New System.Drawing.Point(336, 270)
+        Me.txtSimProbAandNotBVal.Location = New System.Drawing.Point(231, 270)
         Me.txtSimProbAandNotBVal.Name = "txtSimProbAandNotBVal"
         Me.txtSimProbAandNotBVal.ReadOnly = True
         Me.txtSimProbAandNotBVal.Size = New System.Drawing.Size(80, 20)
@@ -5893,7 +5893,7 @@ Partial Class Main
         '
         Me.chkSimProbAandNotB.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkSimProbAandNotB.AutoSize = True
-        Me.chkSimProbAandNotB.Location = New System.Drawing.Point(540, 273)
+        Me.chkSimProbAandNotB.Location = New System.Drawing.Point(435, 273)
         Me.chkSimProbAandNotB.Name = "chkSimProbAandNotB"
         Me.chkSimProbAandNotB.Size = New System.Drawing.Size(15, 14)
         Me.chkSimProbAandNotB.TabIndex = 182
@@ -5902,7 +5902,7 @@ Partial Class Main
         'txtSimProbAandNotBY
         '
         Me.txtSimProbAandNotBY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbAandNotBY.Location = New System.Drawing.Point(476, 270)
+        Me.txtSimProbAandNotBY.Location = New System.Drawing.Point(371, 270)
         Me.txtSimProbAandNotBY.Name = "txtSimProbAandNotBY"
         Me.txtSimProbAandNotBY.Size = New System.Drawing.Size(48, 20)
         Me.txtSimProbAandNotBY.TabIndex = 181
@@ -5911,7 +5911,7 @@ Partial Class Main
         'txtSimProbAandNotBMidX
         '
         Me.txtSimProbAandNotBMidX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbAandNotBMidX.Location = New System.Drawing.Point(422, 270)
+        Me.txtSimProbAandNotBMidX.Location = New System.Drawing.Point(317, 270)
         Me.txtSimProbAandNotBMidX.Name = "txtSimProbAandNotBMidX"
         Me.txtSimProbAandNotBMidX.Size = New System.Drawing.Size(48, 20)
         Me.txtSimProbAandNotBMidX.TabIndex = 180
@@ -5924,13 +5924,13 @@ Partial Class Main
         Me.txtSimProbAandNotB.ContextMenuStrip = Me.ContextMenuStrip2
         Me.txtSimProbAandNotB.Location = New System.Drawing.Point(100, 270)
         Me.txtSimProbAandNotB.Name = "txtSimProbAandNotB"
-        Me.txtSimProbAandNotB.Size = New System.Drawing.Size(230, 20)
+        Me.txtSimProbAandNotB.Size = New System.Drawing.Size(125, 20)
         Me.txtSimProbAandNotB.TabIndex = 179
         '
         'txtSimProbAandBVal
         '
         Me.txtSimProbAandBVal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbAandBVal.Location = New System.Drawing.Point(336, 244)
+        Me.txtSimProbAandBVal.Location = New System.Drawing.Point(231, 244)
         Me.txtSimProbAandBVal.Name = "txtSimProbAandBVal"
         Me.txtSimProbAandBVal.ReadOnly = True
         Me.txtSimProbAandBVal.Size = New System.Drawing.Size(80, 20)
@@ -5941,7 +5941,7 @@ Partial Class Main
         '
         Me.chkSimProbAandB.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkSimProbAandB.AutoSize = True
-        Me.chkSimProbAandB.Location = New System.Drawing.Point(540, 247)
+        Me.chkSimProbAandB.Location = New System.Drawing.Point(435, 247)
         Me.chkSimProbAandB.Name = "chkSimProbAandB"
         Me.chkSimProbAandB.Size = New System.Drawing.Size(15, 14)
         Me.chkSimProbAandB.TabIndex = 177
@@ -5950,7 +5950,7 @@ Partial Class Main
         'txtSimProbAandBY
         '
         Me.txtSimProbAandBY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbAandBY.Location = New System.Drawing.Point(476, 244)
+        Me.txtSimProbAandBY.Location = New System.Drawing.Point(371, 244)
         Me.txtSimProbAandBY.Name = "txtSimProbAandBY"
         Me.txtSimProbAandBY.Size = New System.Drawing.Size(48, 20)
         Me.txtSimProbAandBY.TabIndex = 176
@@ -5959,7 +5959,7 @@ Partial Class Main
         'txtSimProbAandBMidX
         '
         Me.txtSimProbAandBMidX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbAandBMidX.Location = New System.Drawing.Point(422, 244)
+        Me.txtSimProbAandBMidX.Location = New System.Drawing.Point(317, 244)
         Me.txtSimProbAandBMidX.Name = "txtSimProbAandBMidX"
         Me.txtSimProbAandBMidX.Size = New System.Drawing.Size(48, 20)
         Me.txtSimProbAandBMidX.TabIndex = 175
@@ -5972,13 +5972,13 @@ Partial Class Main
         Me.txtSimProbAandB.ContextMenuStrip = Me.ContextMenuStrip2
         Me.txtSimProbAandB.Location = New System.Drawing.Point(100, 244)
         Me.txtSimProbAandB.Name = "txtSimProbAandB"
-        Me.txtSimProbAandB.Size = New System.Drawing.Size(230, 20)
+        Me.txtSimProbAandB.Size = New System.Drawing.Size(125, 20)
         Me.txtSimProbAandB.TabIndex = 174
         '
         'txtSimProbNotAandBVal
         '
         Me.txtSimProbNotAandBVal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbNotAandBVal.Location = New System.Drawing.Point(336, 218)
+        Me.txtSimProbNotAandBVal.Location = New System.Drawing.Point(231, 218)
         Me.txtSimProbNotAandBVal.Name = "txtSimProbNotAandBVal"
         Me.txtSimProbNotAandBVal.ReadOnly = True
         Me.txtSimProbNotAandBVal.Size = New System.Drawing.Size(80, 20)
@@ -5989,7 +5989,7 @@ Partial Class Main
         '
         Me.chkSimProbNotAandB.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkSimProbNotAandB.AutoSize = True
-        Me.chkSimProbNotAandB.Location = New System.Drawing.Point(540, 221)
+        Me.chkSimProbNotAandB.Location = New System.Drawing.Point(435, 221)
         Me.chkSimProbNotAandB.Name = "chkSimProbNotAandB"
         Me.chkSimProbNotAandB.Size = New System.Drawing.Size(15, 14)
         Me.chkSimProbNotAandB.TabIndex = 172
@@ -5998,7 +5998,7 @@ Partial Class Main
         'txtSimProbNotAandBY
         '
         Me.txtSimProbNotAandBY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbNotAandBY.Location = New System.Drawing.Point(476, 218)
+        Me.txtSimProbNotAandBY.Location = New System.Drawing.Point(371, 218)
         Me.txtSimProbNotAandBY.Name = "txtSimProbNotAandBY"
         Me.txtSimProbNotAandBY.Size = New System.Drawing.Size(48, 20)
         Me.txtSimProbNotAandBY.TabIndex = 171
@@ -6007,7 +6007,7 @@ Partial Class Main
         'txtSimProbNotAandBMidX
         '
         Me.txtSimProbNotAandBMidX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbNotAandBMidX.Location = New System.Drawing.Point(422, 218)
+        Me.txtSimProbNotAandBMidX.Location = New System.Drawing.Point(317, 218)
         Me.txtSimProbNotAandBMidX.Name = "txtSimProbNotAandBMidX"
         Me.txtSimProbNotAandBMidX.Size = New System.Drawing.Size(48, 20)
         Me.txtSimProbNotAandBMidX.TabIndex = 170
@@ -6020,7 +6020,7 @@ Partial Class Main
         Me.txtSimProbNotAandB.ContextMenuStrip = Me.ContextMenuStrip2
         Me.txtSimProbNotAandB.Location = New System.Drawing.Point(100, 218)
         Me.txtSimProbNotAandB.Name = "txtSimProbNotAandB"
-        Me.txtSimProbNotAandB.Size = New System.Drawing.Size(230, 20)
+        Me.txtSimProbNotAandB.Size = New System.Drawing.Size(125, 20)
         Me.txtSimProbNotAandB.TabIndex = 169
         '
         'Label195
@@ -6028,7 +6028,7 @@ Partial Class Main
         Me.Label195.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label195.AutoSize = True
         Me.Label195.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label195.Location = New System.Drawing.Point(355, 174)
+        Me.Label195.Location = New System.Drawing.Point(250, 174)
         Me.Label195.Name = "Label195"
         Me.Label195.Size = New System.Drawing.Size(43, 15)
         Me.Label195.TabIndex = 168
@@ -6039,7 +6039,7 @@ Partial Class Main
         Me.Label196.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label196.AutoSize = True
         Me.Label196.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label196.Location = New System.Drawing.Point(528, 174)
+        Me.Label196.Location = New System.Drawing.Point(423, 174)
         Me.Label196.Name = "Label196"
         Me.Label196.Size = New System.Drawing.Size(42, 15)
         Me.Label196.TabIndex = 167
@@ -6060,7 +6060,7 @@ Partial Class Main
         Me.Label198.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label198.AutoSize = True
         Me.Label198.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label198.Location = New System.Drawing.Point(489, 174)
+        Me.Label198.Location = New System.Drawing.Point(384, 174)
         Me.Label198.Name = "Label198"
         Me.Label198.Size = New System.Drawing.Size(15, 15)
         Me.Label198.TabIndex = 165
@@ -6071,7 +6071,7 @@ Partial Class Main
         Me.Label199.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label199.AutoSize = True
         Me.Label199.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label199.Location = New System.Drawing.Point(439, 174)
+        Me.Label199.Location = New System.Drawing.Point(334, 174)
         Me.Label199.Name = "Label199"
         Me.Label199.Size = New System.Drawing.Size(16, 15)
         Me.Label199.TabIndex = 164
@@ -6080,7 +6080,7 @@ Partial Class Main
         'txtSimProbNotAandNotBVal
         '
         Me.txtSimProbNotAandNotBVal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbNotAandNotBVal.Location = New System.Drawing.Point(336, 192)
+        Me.txtSimProbNotAandNotBVal.Location = New System.Drawing.Point(231, 192)
         Me.txtSimProbNotAandNotBVal.Name = "txtSimProbNotAandNotBVal"
         Me.txtSimProbNotAandNotBVal.ReadOnly = True
         Me.txtSimProbNotAandNotBVal.Size = New System.Drawing.Size(80, 20)
@@ -6091,7 +6091,7 @@ Partial Class Main
         '
         Me.chkSimProbNotAandNotB.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkSimProbNotAandNotB.AutoSize = True
-        Me.chkSimProbNotAandNotB.Location = New System.Drawing.Point(540, 195)
+        Me.chkSimProbNotAandNotB.Location = New System.Drawing.Point(435, 195)
         Me.chkSimProbNotAandNotB.Name = "chkSimProbNotAandNotB"
         Me.chkSimProbNotAandNotB.Size = New System.Drawing.Size(15, 14)
         Me.chkSimProbNotAandNotB.TabIndex = 162
@@ -6100,7 +6100,7 @@ Partial Class Main
         'txtSimProbNotAandNotBY
         '
         Me.txtSimProbNotAandNotBY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbNotAandNotBY.Location = New System.Drawing.Point(476, 192)
+        Me.txtSimProbNotAandNotBY.Location = New System.Drawing.Point(371, 192)
         Me.txtSimProbNotAandNotBY.Name = "txtSimProbNotAandNotBY"
         Me.txtSimProbNotAandNotBY.Size = New System.Drawing.Size(48, 20)
         Me.txtSimProbNotAandNotBY.TabIndex = 161
@@ -6109,7 +6109,7 @@ Partial Class Main
         'txtSimProbNotAandNotBMidX
         '
         Me.txtSimProbNotAandNotBMidX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimProbNotAandNotBMidX.Location = New System.Drawing.Point(422, 192)
+        Me.txtSimProbNotAandNotBMidX.Location = New System.Drawing.Point(317, 192)
         Me.txtSimProbNotAandNotBMidX.Name = "txtSimProbNotAandNotBMidX"
         Me.txtSimProbNotAandNotBMidX.Size = New System.Drawing.Size(48, 20)
         Me.txtSimProbNotAandNotBMidX.TabIndex = 160
@@ -6122,7 +6122,7 @@ Partial Class Main
         Me.txtSimProbNotAandNotB.ContextMenuStrip = Me.ContextMenuStrip2
         Me.txtSimProbNotAandNotB.Location = New System.Drawing.Point(100, 192)
         Me.txtSimProbNotAandNotB.Name = "txtSimProbNotAandNotB"
-        Me.txtSimProbNotAandNotB.Size = New System.Drawing.Size(230, 20)
+        Me.txtSimProbNotAandNotB.Size = New System.Drawing.Size(125, 20)
         Me.txtSimProbNotAandNotB.TabIndex = 159
         '
         'Label194
@@ -6136,16 +6136,14 @@ Partial Class Main
         '
         'txtSimTitleY
         '
-        Me.txtSimTitleY.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimTitleY.Location = New System.Drawing.Point(226, 139)
+        Me.txtSimTitleY.Location = New System.Drawing.Point(121, 139)
         Me.txtSimTitleY.Name = "txtSimTitleY"
         Me.txtSimTitleY.Size = New System.Drawing.Size(48, 20)
         Me.txtSimTitleY.TabIndex = 18
         '
         'txtSimTitleMidX
         '
-        Me.txtSimTitleMidX.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtSimTitleMidX.Location = New System.Drawing.Point(146, 140)
+        Me.txtSimTitleMidX.Location = New System.Drawing.Point(41, 140)
         Me.txtSimTitleMidX.Name = "txtSimTitleMidX"
         Me.txtSimTitleMidX.Size = New System.Drawing.Size(48, 20)
         Me.txtSimTitleMidX.TabIndex = 17
@@ -6153,10 +6151,9 @@ Partial Class Main
         '
         'Label192
         '
-        Me.Label192.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label192.AutoSize = True
         Me.Label192.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label192.Location = New System.Drawing.Point(200, 141)
+        Me.Label192.Location = New System.Drawing.Point(95, 141)
         Me.Label192.Name = "Label192"
         Me.Label192.Size = New System.Drawing.Size(20, 16)
         Me.Label192.TabIndex = 16
@@ -6164,10 +6161,9 @@ Partial Class Main
         '
         'Label193
         '
-        Me.Label193.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label193.AutoSize = True
         Me.Label193.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label193.Location = New System.Drawing.Point(121, 140)
+        Me.Label193.Location = New System.Drawing.Point(16, 140)
         Me.Label193.Name = "Label193"
         Me.Label193.Size = New System.Drawing.Size(19, 16)
         Me.Label193.TabIndex = 15
@@ -6189,7 +6185,7 @@ Partial Class Main
         Me.txtSimTitle.ContextMenuStrip = Me.ContextMenuStrip2
         Me.txtSimTitle.Location = New System.Drawing.Point(42, 114)
         Me.txtSimTitle.Name = "txtSimTitle"
-        Me.txtSimTitle.Size = New System.Drawing.Size(529, 20)
+        Me.txtSimTitle.Size = New System.Drawing.Size(424, 20)
         Me.txtSimTitle.TabIndex = 11
         '
         'GroupBox7
@@ -7637,7 +7633,7 @@ Partial Class Main
         Me.TabPage12.Location = New System.Drawing.Point(4, 22)
         Me.TabPage12.Name = "TabPage12"
         Me.TabPage12.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage12.Size = New System.Drawing.Size(976, 617)
+        Me.TabPage12.Size = New System.Drawing.Size(743, 617)
         Me.TabPage12.TabIndex = 1
         Me.TabPage12.Text = "Probabilities"
         Me.TabPage12.UseVisualStyleBackColor = True
@@ -9163,7 +9159,7 @@ Partial Class Main
         Me.pbVenn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.pbVenn.Location = New System.Drawing.Point(3, 51)
         Me.pbVenn.Name = "pbVenn"
-        Me.pbVenn.Size = New System.Drawing.Size(759, 414)
+        Me.pbVenn.Size = New System.Drawing.Size(827, 414)
         Me.pbVenn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbVenn.TabIndex = 0
         Me.pbVenn.TabStop = False
@@ -9189,7 +9185,7 @@ Partial Class Main
         Me.SplitContainer3.Panel2.Controls.Add(Me.Label26)
         Me.SplitContainer3.Panel2.Controls.Add(Me.txtEventANodeInfo)
         Me.SplitContainer3.Panel2.Controls.Add(Me.trvEventA)
-        Me.SplitContainer3.Size = New System.Drawing.Size(560, 1164)
+        Me.SplitContainer3.Size = New System.Drawing.Size(610, 1164)
         Me.SplitContainer3.SplitterDistance = 564
         Me.SplitContainer3.TabIndex = 0
         '
@@ -9209,7 +9205,7 @@ Partial Class Main
         Me.txtEventBNodeInfo.Location = New System.Drawing.Point(66, 27)
         Me.txtEventBNodeInfo.Multiline = True
         Me.txtEventBNodeInfo.Name = "txtEventBNodeInfo"
-        Me.txtEventBNodeInfo.Size = New System.Drawing.Size(487, 64)
+        Me.txtEventBNodeInfo.Size = New System.Drawing.Size(537, 64)
         Me.txtEventBNodeInfo.TabIndex = 10
         '
         'Label27
@@ -9229,7 +9225,7 @@ Partial Class Main
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.trvEventB.Location = New System.Drawing.Point(3, 97)
         Me.trvEventB.Name = "trvEventB"
-        Me.trvEventB.Size = New System.Drawing.Size(550, 460)
+        Me.trvEventB.Size = New System.Drawing.Size(600, 460)
         Me.trvEventB.TabIndex = 6
         '
         'Label42
@@ -9258,7 +9254,7 @@ Partial Class Main
         Me.txtEventANodeInfo.Location = New System.Drawing.Point(66, 27)
         Me.txtEventANodeInfo.Multiline = True
         Me.txtEventANodeInfo.Name = "txtEventANodeInfo"
-        Me.txtEventANodeInfo.Size = New System.Drawing.Size(487, 64)
+        Me.txtEventANodeInfo.Size = New System.Drawing.Size(537, 64)
         Me.txtEventANodeInfo.TabIndex = 8
         '
         'trvEventA
@@ -9268,11 +9264,12 @@ Partial Class Main
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.trvEventA.Location = New System.Drawing.Point(3, 97)
         Me.trvEventA.Name = "trvEventA"
-        Me.trvEventA.Size = New System.Drawing.Size(550, 492)
+        Me.trvEventA.Size = New System.Drawing.Size(600, 492)
         Me.trvEventA.TabIndex = 6
         '
         'TabPage2
         '
+        Me.TabPage2.AllowDrop = True
         Me.TabPage2.Controls.Add(Me.btnOpenParentDir)
         Me.TabPage2.Controls.Add(Me.btnOpenArchive)
         Me.TabPage2.Controls.Add(Me.btnCreateArchive)
@@ -9692,7 +9689,7 @@ Partial Class Main
         '
         Me.btnWebPages.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnWebPages.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.btnWebPages.Location = New System.Drawing.Point(1003, 12)
+        Me.btnWebPages.Location = New System.Drawing.Point(1121, 12)
         Me.btnWebPages.Name = "btnWebPages"
         Me.btnWebPages.Size = New System.Drawing.Size(68, 22)
         Me.btnWebPages.TabIndex = 279
@@ -9762,7 +9759,7 @@ Partial Class Main
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(1378, 1254)
+        Me.ClientSize = New System.Drawing.Size(1496, 1254)
         Me.Controls.Add(Me.btnWebPages)
         Me.Controls.Add(Me.btnAndorville)
         Me.Controls.Add(Me.TabControl1)

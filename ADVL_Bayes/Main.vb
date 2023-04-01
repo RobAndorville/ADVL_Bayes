@@ -694,7 +694,8 @@ Public Class Main
             If Settings.<FormSettings>.<GenNEvent>.Value <> Nothing Then
                 GenNEvent = Settings.<FormSettings>.<GenNEvent>.Value
                 RedisplayGenConfIntVals()
-                GenWilsonInterval() 'Calculate the Confidence Interval
+                'GenWilsonInterval() 'Calculate the Confidence Interval
+                WilsonInterval(GenSurveySize, GenMLProbEvent, GenConfidence)
             End If
 
             If Settings.<FormSettings>.<EventSimSurveySize>.Value <> Nothing Then BayesSim.Settings.EventSurveySize = Settings.<FormSettings>.<EventSimSurveySize>.Value
@@ -1447,7 +1448,8 @@ Public Class Main
         txtGenSurveySize.Text = SampString(GenSurveySize) 'The initial Survey Size value to use in the General Confidence Interval calculator.
         txtGenNEvent.Text = SampString(GenNEvent) 'The initial Survey Event Count to use in the General Confidence Interval calculator.
         txtPMLEvent.Text = ProbString(GenMLProbEvent) 'The initial Most Likely Event Probability to use in the General Confidence Interval calculator.
-        GenWilsonInterval() 'Calculate the Confidence Interval.
+        'GenWilsonInterval() 'Calculate the Confidence Interval.
+        WilsonInterval(GenSurveySize, GenMLProbEvent, GenConfidence)
 
 
         InitialiseForm() 'Initialise the form for a new project.
@@ -7250,7 +7252,7 @@ Public Class Main
             ShowDecimalProbabilities()
         End If
 
-        WilsonInterval() 'Show the confidence intervals for the probabilities
+        WilsonIntervals() 'Show the confidence intervals for the probabilities
 
         'CalcPerformanceMetrics()
         ShowPerformanceMetrics()
@@ -11754,14 +11756,14 @@ Public Class Main
                 ConfidValue = txtConfidence.Text
                 If Confidence <> ConfidValue Then
                     Confidence = ConfidValue 'Only set the DefinedValue if the Value has changed
-                    WilsonInterval()
+                    WilsonIntervals()
                 End If
             ElseIf Bayes.Settings.ProbabilityMeasure = "Percent" Then
                 ConfidValue = txtConfidence.Text.Replace("%", "")
                 ConfidValue = ConfidValue / 100
                 If Confidence <> ConfidValue Then
                     Confidence = ConfidValue 'Only set the DefinedValue if the Value has changed
-                    WilsonInterval()
+                    WilsonIntervals()
                 End If
             Else
                 Message.AddWarning("Unknown probability measure: " & Bayes.Settings.ProbabilityMeasure & vbCrLf)
@@ -11772,7 +11774,7 @@ Public Class Main
         End Try
     End Sub
 
-    Private Sub WilsonInterval()
+    Private Sub WilsonIntervals()
         'Calculates the Wilson Confidence Interval for the survey probability estimates.
 
         'Formulas are from the Research Article: "Ensemble confidence intervals for binomial proportions" by Hayeon Park & Lawrence M. Leemis, Statistics in Medicine. 2019;38:3460–3475.
@@ -11901,7 +11903,7 @@ Public Class Main
         'Calculates the Wilson Confidence Interval for the survey probability estimates.
         'This method uses the data in the General Survey Confidence Inteval Calculator group box.
         Try
-            Dim N As Long = GenSurveySize 'The number of samples in the survey
+            Dim N As Long = GenSurveySize 'The number of samples in the survey. 
             Dim P As Double = GenMLProbEvent 'The estimated probability
             Dim Alpha As Double = 1 - GenConfidence 'The required confidence level. The Confidence property is edited using the txtConfidence text box.
             Dim ZHA As Double = InvStdNormalCdf(1 - (Alpha / 2)) 'This is the (1 - Alpha/2) percentile of the standard normal distribution.
@@ -11917,13 +11919,36 @@ Public Class Main
         End Try
     End Sub
 
+    Private Sub WilsonInterval(SurveySize As Double, MLProbEvent As Double, Confidence As Double)
+        'Calculates the Wilson Confidence Interval for the survey probability estimates.
+        'Formulas are from the Research Article: "Ensemble confidence intervals for binomial proportions" by Hayeon Park & Lawrence M. Leemis, Statistics in Medicine. 2019;38:3460–3475.
+        'See also: https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm
+
+        'The confidence intervals can be checked using these pages:
+        'https://www.statskingdom.com/41_proportion_confidence_interval.html
+        'https://epitools.ausvet.com.au/ciproportion
+
+        Dim N As Long = SurveySize 'The number of samples in the survey. (Using the N variable so the equations are shorter.)
+        Dim P As Double = MLProbEvent 'The estimated probability. (Using the P variable so the equations are shorter.)
+        Dim Alpha As Double = 1 - Confidence  'Confidence is the required confidence level.
+        Dim ZHA As Double = InvStdNormalCdf(1 - (Alpha / 2)) 'This is the (1 - Alpha/2) percentile of the standard normal distribution.
+        Dim ZHASq As Double = ZHA ^ 2
+
+        'Calculate the lower and upper bounds of the confidence interval:
+        Dim LowerProb As Double = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) - ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        Dim UpperProb As Double = (1 / (1 + ZHASq / N)) * (P + ZHASq / (2 * N) + ZHA * Math.Sqrt(P * (1 - P) / N + ZHASq / (4 * N * N)))
+        txtPLBEvent.Text = ProbString(LowerProb) 'In this code example, the lower bound is displayed in the text box txtPLBEvent
+        txtPUBEvent.Text = ProbString(UpperProb) 'In this code example, the upper bound is displayed in the text box txtPUBEvent
+    End Sub
+
     Private Sub RedisplayGenConfIntVals()
         'Redisplay the General Confidence Interval Calculator values.
         txtGenConfid.Text = ProbString(GenConfidence)
         txtGenSurveySize.Text = SampString(GenSurveySize)
         txtGenNEvent.Text = SampString(GenNEvent)
         txtPMLEvent.Text = ProbString(GenMLProbEvent)
-        GenWilsonInterval()
+        'GenWilsonInterval()
+        WilsonInterval(GenSurveySize, GenMLProbEvent, GenConfidence)
     End Sub
 
     Private Sub txtGenConfid_TextChanged(sender As Object, e As EventArgs) Handles txtGenConfid.TextChanged
@@ -11939,7 +11964,8 @@ Public Class Main
                 txtGenConfid.Text = ProbString(ConfidValue) 'Redisplay the confidence level with the specified format.
                 If GenConfidence <> ConfidValue Then
                     GenConfidence = ConfidValue 'Only set the GenConfidence if the Value has changed
-                    GenWilsonInterval()
+                    'GenWilsonInterval()
+                    WilsonInterval(GenSurveySize, GenMLProbEvent, GenConfidence)
                 End If
             ElseIf Bayes.Settings.ProbabilityMeasure = "Percent" Then
                 ConfidValue = txtGenConfid.Text.Replace("%", "")
@@ -11947,7 +11973,8 @@ Public Class Main
                 txtGenConfid.Text = ProbString(ConfidValue) 'Redisplay the confidence level with the specified format.
                 If GenConfidence <> ConfidValue Then
                     GenConfidence = ConfidValue 'Only set the GenConfidence if the Value has changed
-                    GenWilsonInterval()
+                    'GenWilsonInterval()
+                    WilsonInterval(GenSurveySize, GenMLProbEvent, GenConfidence)
                 End If
             Else
                 Message.AddWarning("Unknown probability measure: " & Bayes.Settings.ProbabilityMeasure & vbCrLf)
@@ -11971,7 +11998,8 @@ Public Class Main
             If GenSurveySize <> SurveySize Then
                 GenSurveySize = SurveySize 'Only set the GenSurveySize if the Value has changed
                 txtGenNEvent.Text = SampString(GenNEvent) 'Changing the survey size changes the survey event count
-                GenWilsonInterval()
+                'GenWilsonInterval()
+                WilsonInterval(GenSurveySize, GenMLProbEvent, GenConfidence)
             End If
         Catch ex As Exception
             Message.AddWarning(ex.Message & vbCrLf)
@@ -11991,7 +12019,8 @@ Public Class Main
             If GenNEvent <> NEvent Then
                 GenNEvent = NEvent 'Only set the GenNEvent if the Value has changed
                 txtPMLEvent.Text = ProbString(GenMLProbEvent) 'Changing the survey event count changes the most likely event probability
-                GenWilsonInterval()
+                'GenWilsonInterval()
+                WilsonInterval(GenSurveySize, GenMLProbEvent, GenConfidence)
             End If
         Catch ex As Exception
             Message.AddWarning(ex.Message & vbCrLf)
@@ -12012,7 +12041,8 @@ Public Class Main
                 If GenMLProbEvent <> PEvent Then
                     GenMLProbEvent = PEvent 'Only set the GenMLProbEvent if the Value has changed
                     txtGenNEvent.Text = SampString(GenNEvent) 'Changing the event probability changes the survey event count
-                    GenWilsonInterval()
+                    'GenWilsonInterval()
+                    WilsonInterval(GenSurveySize, GenMLProbEvent, GenConfidence)
                 End If
             ElseIf Bayes.Settings.ProbabilityMeasure = "Percent" Then
                 PEvent = txtPMLEvent.Text.Replace("%", "")
@@ -12021,7 +12051,8 @@ Public Class Main
                 If GenMLProbEvent <> PEvent Then
                     GenMLProbEvent = PEvent 'Only set the GenMLProbEvent if the Value has changed
                     txtGenNEvent.Text = SampString(GenNEvent) 'Changing the event probability changes the survey event count
-                    GenWilsonInterval()
+                    'GenWilsonInterval()
+                    WilsonInterval(GenSurveySize, GenMLProbEvent, GenConfidence)
                 End If
             Else
                 Message.AddWarning("Unknown probability measure: " & Bayes.Settings.ProbabilityMeasure & vbCrLf)
@@ -12053,7 +12084,6 @@ Public Class Main
         Dim B3 As Double = 1.781477937
         Dim B4 As Double = -1.821255978
         Dim B5 As Double = 1.330274429
-        'Dim Z As Double = 1 / (Math.Sqrt(2 * Math.PI)) * Math.Exp(-X ^ 2 / 2)
         Dim Z As Double = 1 / (Math.Sqrt(2 * Math.PI)) * Math.Exp(-PosX ^ 2 / 2)
 
         If X >= 0 Then
@@ -12066,6 +12096,9 @@ Public Class Main
     Private Function InvStdNormalCdf(ByRef Prob As Double) As Double
         'The Inverse Standard Cumulative Normal distribution.
         'https://www.source-code.biz/snippets/vbasic/9.htm
+        'Peter John Acklam's algorithm: https://stackedboxes.org/2017/05/01/acklams-normal-quantile-function/
+        'Author: Christian d'Heureuse (www.source-code.biz, www.inventec.ch/chdh)
+        'License: Free / LGPL
 
         Const a1 = -39.6968302866538, a2 = 220.946098424521, a3 = -275.928510446969
         Const a4 = 138.357751867269, a5 = -30.6647980661472, a6 = 2.50662827745924
